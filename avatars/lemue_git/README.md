@@ -5,7 +5,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git-1.png" target="_blank">
     <img src="./lemue_git-1.png" alt="lemue_git-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -15,7 +15,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_blue-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_blue-1.png" target="_blank">
     <img src="./lemue_git_blue-1.png" alt="lemue_git_blue-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -25,7 +25,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_blue_light-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_blue_light-1.png" target="_blank">
     <img src="./lemue_git_blue_light-1.png" alt="lemue_git_blue_light-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -35,7 +35,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_green-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_green-1.png" target="_blank">
     <img src="./lemue_git_green-1.png" alt="lemue_git_green-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -45,7 +45,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_green_light-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_green_light-1.png" target="_blank">
     <img src="./lemue_git_green_light-1.png" alt="lemue_git_green_light-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -55,7 +55,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_orange-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_orange-1.png" target="_blank">
     <img src="./lemue_git_orange-1.png" alt="lemue_git_orange-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -65,7 +65,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_orange_light-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_orange_light-1.png" target="_blank">
     <img src="./lemue_git_orange_light-1.png" alt="lemue_git_orange_light-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -75,7 +75,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_purple-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_purple-1.png" target="_blank">
     <img src="./lemue_git_purple-1.png" alt="lemue_git_purple-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -85,7 +85,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_red-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_red-1.png" target="_blank">
     <img src="./lemue_git_red-1.png" alt="lemue_git_red-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -95,7 +95,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_yellow-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_yellow-1.png" target="_blank">
     <img src="./lemue_git_yellow-1.png" alt="lemue_git_yellow-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -105,7 +105,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_git_yellow_light-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_git/lemue_git_yellow_light-1.png" target="_blank">
     <img src="./lemue_git_yellow_light-1.png" alt="lemue_git_yellow_light-1" style="max-width: 100%;" />
   </a>
   <br>

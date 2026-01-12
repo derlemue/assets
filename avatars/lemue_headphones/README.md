@@ -5,7 +5,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones-1.png" target="_blank">
     <img src="./lemue_headphones-1.png" alt="lemue_headphones-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -15,7 +15,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_blue-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_blue-1.png" target="_blank">
     <img src="./lemue_headphones_blue-1.png" alt="lemue_headphones_blue-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -25,7 +25,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_green-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_green-1.png" target="_blank">
     <img src="./lemue_headphones_green-1.png" alt="lemue_headphones_green-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -35,7 +35,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_orange-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_orange-1.png" target="_blank">
     <img src="./lemue_headphones_orange-1.png" alt="lemue_headphones_orange-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -45,7 +45,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_pink-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_pink-1.png" target="_blank">
     <img src="./lemue_headphones_pink-1.png" alt="lemue_headphones_pink-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -55,7 +55,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_purple-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_purple-1.png" target="_blank">
     <img src="./lemue_headphones_purple-1.png" alt="lemue_headphones_purple-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -65,7 +65,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_red-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_red-1.png" target="_blank">
     <img src="./lemue_headphones_red-1.png" alt="lemue_headphones_red-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -75,7 +75,7 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_yellow-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemue_headphones/lemue_headphones_yellow-1.png" target="_blank">
     <img src="./lemue_headphones_yellow-1.png" alt="lemue_headphones_yellow-1" style="max-width: 100%;" />
   </a>
   <br>

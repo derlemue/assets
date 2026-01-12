@@ -5,7 +5,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git-1.png" target="_blank">
     <img src="./ph0x_git-1.png" alt="ph0x_git-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -15,7 +15,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_2-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_2-1.png" target="_blank">
     <img src="./ph0x_git_2-1.png" alt="ph0x_git_2-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -25,7 +25,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_3-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_3-1.png" target="_blank">
     <img src="./ph0x_git_3-1.png" alt="ph0x_git_3-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -35,7 +35,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_4a-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_4a-1.png" target="_blank">
     <img src="./ph0x_git_4a-1.png" alt="ph0x_git_4a-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -45,7 +45,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_4b-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_4b-1.png" target="_blank">
     <img src="./ph0x_git_4b-1.png" alt="ph0x_git_4b-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -55,7 +55,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_5-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_5-1.png" target="_blank">
     <img src="./ph0x_git_5-1.png" alt="ph0x_git_5-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -65,7 +65,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_5_wide-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_5_wide-1.png" target="_blank">
     <img src="./ph0x_git_5_wide-1.png" alt="ph0x_git_5_wide-1" style="max-width: 100%;" />
   </a>
   <br>
@@ -75,7 +75,7 @@
 ---
 
 <div align="center">
-  <a href="./ph0x_git_6-1.png">
+  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/ph0x_git/ph0x_git_6-1.png" target="_blank">
     <img src="./ph0x_git_6-1.png" alt="ph0x_git_6-1" style="max-width: 100%;" />
   </a>
   <br>
