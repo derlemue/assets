@@ -1,4 +1,12 @@
-📊 Prozess-Visualisierung: Honey-ScanDiese Diagramme visualisieren die Logik und den Datenfluss basierend auf der Analyse des Codes.1. Der Haupt-Workflow (Orchestrierung)Dieses Diagramm zeigt, wie der Controller die Aufgaben verteilt. Es ist in logische Phasen (Subgraphen) unterteilt.graph TD
+# 📊 Prozess-Visualisierung: Honey-Scan
+
+Diese Diagramme visualisieren die Logik und den Datenfluss basierend auf der Analyse des Codes.
+
+## 1. Der Haupt-Workflow (Orchestrierung)
+Dieses Diagramm zeigt, wie der Controller die Aufgaben verteilt. Es ist in logische Phasen (Subgraphen) unterteilt.
+
+```mermaid
+graph TD
     %% Styling
     classDef init fill:#2d3436,stroke:#fff,stroke-width:2px,color:#fff;
     classDef process fill:#0984e3,stroke:#fff,color:#fff;
@@ -35,7 +43,15 @@
         WriteJSON --> End((🏁 Ende)):::init
         PrintOut --> End
     end
-2. Detail-Logik: Der "Fingerprinting" SubprozessHier zoomen wir tief in die Funktion hinein, die entscheidet, ob eine IP ein Honeypot ist. Dies visualisiert die If/Else-Logik im Scanner-Modul.flowchart TD
+```
+
+---
+
+## 2. Detail-Logik: Der "Fingerprinting" Subprozess
+Hier zoomen wir tief in die Funktion hinein, die entscheidet, ob eine IP ein Honeypot ist.
+
+```mermaid
+flowchart TD
     %% Nodes
     Input([Eingabe: IP & Port]) --> SocketInit[Initialisiere Socket]
     SocketInit --> TryConnect{Verbindung möglich?}
@@ -68,7 +84,15 @@
     style SetFlag fill:#d63031,stroke:#fff,color:#fff
     style CleanHost fill:#00b894,stroke:#fff,color:#fff
     style MatchDB fill:#fdcb6e,stroke:#333,color:#000
-3. Datenstrom & Objekt-Zustände (State Diagram)Dieses Diagramm zeigt, welche Zustände ein "Target" (eine Ziel-IP) während der Laufzeit des Programms durchläuft.stateDiagram-v2
+```
+
+---
+
+## 3. Datenstrom & Objekt-Zustände
+Dieses Diagramm zeigt, welche Zustände ein "Target" (eine Ziel-IP) während der Laufzeit des Programms durchläuft.
+
+```mermaid
+stateDiagram-v2
     [*] --> Pending: Zur Warteschlange hinzugefügt
     
     Pending --> Scanning: Worker übernimmt Job
@@ -90,7 +114,15 @@
     
     Archiviert --> [*]
     Verworfen --> [*]
-4. API Sequenz (Kommunikation)Wer spricht mit wem? Dieses Diagramm zeigt die Abhängigkeiten zwischen den Python-Modulen/Klassen.sequenceDiagram
+```
+
+---
+
+## 4. API Sequenz (Kommunikation)
+Wer spricht mit wem? Dieses Diagramm zeigt die Abhängigkeiten zwischen den Python-Modulen/Klassen.
+
+```mermaid
+sequenceDiagram
     participant User
     participant Main as main.py
     participant Controller as Controller Class
@@ -125,3 +157,4 @@
     end
 
     Controller->>User: Print Ergebnis (Console/File)
+```
