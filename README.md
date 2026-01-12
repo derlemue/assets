@@ -42,8 +42,8 @@ Files are standardized with a numeric suffix (e.g., `item-1.png`, `item-2.png`) 
 
 We maintain detailed analysis and security reports within this repository.
 
-- **Cyber Defense Ecosystem Analysis**: [`docs/reports/ANALYSEBERICHT_ CYBER-DEFENSE-ÖKOSYSTEM (LEMUEIO).pdf`](docs/reports/ANALYSEBERICHT_%20CYBER-DEFENSE-ÖKOSYSTEM%20(LEMUEIO).pdf)
-- **Honey Security Infrastructure Analysis**: [`docs/reports/ANALYSEBERICHT_ HONEY SECURITY INFRASTRUKTUR (lemueIO).pdf`](docs/reports/ANALYSEBERICHT_%20HONEY%20SECURITY%20INFRASTRUKTUR%20(lemueIO).pdf)
+- **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
+- **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)
 
 ---
 

@@ -13,5 +13,6 @@ All notable changes to this project will be documented in this file.
 - ♻️ **Refactor**: Restructured `avatars/lemueIO` by moving assets into dedicated `logo`, `image`, and `flyer` subdirectories.
 - 🚚 **Refactor**: Moved analysis PDF reports from root to `docs/reports`.
 - ✏️ **Refactor**: Standardized filenames by adding `-1` suffix to base files (e.g., `logo.png` -> `logo-1.png`) for consistent gallery ordering.
+- ✏️ **Refactor**: Renamed and standardized PDF reports (e.g., `cyber-defense-report-1.pdf`) to match naming conventions.
 - 📸 **Docs**: Added auto-generated gallery `README` files for all asset subdirectories.
 - 💄 **Docs**: Enhanced README with professional design, badges, and detailed content tables.
