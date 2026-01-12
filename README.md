@@ -44,7 +44,15 @@ We maintain detailed analysis and security reports within this repository.
 
 - **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
 - **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)
-- **Honey Scan Deep Research Report**: [View Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-1.html)
+- **Honey Scan Deep Research Report (Analysis 1)**:
+  - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-1.html)
+  - [PDF Version](docs/reports/honey-scan-deepresearch-report-1.pdf)
+  - [Markdown Source](docs/reports/honey-scan-deepresearch-report-1.md)
+  - [Audio Summary](docs/reports/honey-scan-deepresearch-report-1.mp3)
+  - [IDE Optimized](docs/reports/honey-scan-deepresearch-report-for-ide-1.md)
+- **Honey Scan Deep Research Report (Analysis 2)**:
+  - [PDF Version](docs/reports/honey-scan-deepresearch-report-2.pdf)
+  - [Markdown Source](docs/reports/honey-scan-deepresearch-report-2.md)
 
 ---
 
