@@ -12,4 +12,6 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - ♻️ **Refactor**: Restructured `avatars/lemueIO` by moving assets into dedicated `logo`, `image`, and `flyer` subdirectories.
 - 🚚 **Refactor**: Moved analysis PDF reports from root to `docs/reports`.
+- ✏️ **Refactor**: Standardized filenames by adding `-1` suffix to base files (e.g., `logo.png` -> `logo-1.png`) for consistent gallery ordering.
+- 📸 **Docs**: Added auto-generated gallery `README` files for all asset subdirectories.
 - 💄 **Docs**: Enhanced README with professional design, badges, and detailed content tables.

@@ -33,6 +33,9 @@ Location: `avatars/lemueIO/`
 Location: `avatars/m3l1nda_clip/`
 - Short clips and video snippets.
 
+### 🔢 Naming Convention
+Files are standardized with a numeric suffix (e.g., `item-1.png`, `item-2.png`) to ensure consistent ordering and easy referencing.
+
 ---
 
 ## 📄 Reports

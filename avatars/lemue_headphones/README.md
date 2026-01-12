@@ -5,81 +5,81 @@
 ---
 
 <div align="center">
-  <a href="./lemue_headphones.png">
-    <img src="./lemue_headphones.png" alt="lemue_headphones.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones-1.png">
+    <img src="./lemue_headphones-1.png" alt="lemue_headphones-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones.png</sub>
+  <sub>lemue_headphones-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_blue.png">
-    <img src="./lemue_headphones_blue.png" alt="lemue_headphones_blue.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_blue-1.png">
+    <img src="./lemue_headphones_blue-1.png" alt="lemue_headphones_blue-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_blue.png</sub>
+  <sub>lemue_headphones_blue-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_green.png">
-    <img src="./lemue_headphones_green.png" alt="lemue_headphones_green.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_green-1.png">
+    <img src="./lemue_headphones_green-1.png" alt="lemue_headphones_green-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_green.png</sub>
+  <sub>lemue_headphones_green-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_orange.png">
-    <img src="./lemue_headphones_orange.png" alt="lemue_headphones_orange.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_orange-1.png">
+    <img src="./lemue_headphones_orange-1.png" alt="lemue_headphones_orange-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_orange.png</sub>
+  <sub>lemue_headphones_orange-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_pink.png">
-    <img src="./lemue_headphones_pink.png" alt="lemue_headphones_pink.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_pink-1.png">
+    <img src="./lemue_headphones_pink-1.png" alt="lemue_headphones_pink-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_pink.png</sub>
+  <sub>lemue_headphones_pink-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_purple.png">
-    <img src="./lemue_headphones_purple.png" alt="lemue_headphones_purple.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_purple-1.png">
+    <img src="./lemue_headphones_purple-1.png" alt="lemue_headphones_purple-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_purple.png</sub>
+  <sub>lemue_headphones_purple-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_red.png">
-    <img src="./lemue_headphones_red.png" alt="lemue_headphones_red.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_red-1.png">
+    <img src="./lemue_headphones_red-1.png" alt="lemue_headphones_red-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_red.png</sub>
+  <sub>lemue_headphones_red-1</sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="./lemue_headphones_yellow.png">
-    <img src="./lemue_headphones_yellow.png" alt="lemue_headphones_yellow.png" style="max-width: 100%;" />
+  <a href="./lemue_headphones_yellow-1.png">
+    <img src="./lemue_headphones_yellow-1.png" alt="lemue_headphones_yellow-1" style="max-width: 100%;" />
   </a>
   <br>
-  <sub>lemue_headphones_yellow.png</sub>
+  <sub>lemue_headphones_yellow-1</sub>
 </div>
 
 ---
