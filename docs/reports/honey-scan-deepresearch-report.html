@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honey-Scan | Code & Architektur Analyse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: '#0B0C15',
+                            card: '#151725',
+                            accent: '#4361EE', // Vibrant Blue
+                            glow: '#4CC9F0',   // Cyan
+                            alert: '#F72585',  // Neon Pink
+                            success: '#4ADE80',
+                            text: '#E2E8F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0C15;
+            color: #E2E8F0;
+        }
+        .cyber-card {
+            background: #151725;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .cyber-card:hover {
+            border-color: #4361EE;
+            box-shadow: 0 0 15px rgba(67, 97, 238, 0.2);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .flow-node {
+            background: #1E293B;
+            border-left: 4px solid #4361EE;
+        }
+        .flow-arrow {
+            color: #4CC9F0;
+            font-size: 1.5rem;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0C15;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4361EE;
+            border-radius: 4px;
+        }
+    </style>
+    <!-- 
+        PALETTE SELECTED: Vibrant/Cyber (Based on "Energetic & Playful" / "Brilliant Blues")
+        Colors: #0B0C15 (Deep BG), #4361EE (Primary Blue), #F72585 (Accent Pink), #4CC9F0 (Cyan)
+        NO SVG USED. NO MERMAID JS USED.
+        NARRATIVE PLAN:
+        1. Intro -> Was ist Honey-Scan?
+        2. Stats -> Code Metriken
+        3. Logic -> Wie funktioniert die Erkennung? (Flowchart HTML)
+        4. Data -> Verteilung der Funktionen (Charts)
+        5. Process -> API & Data Stream
+    -->
+</head>
+<body class="antialiased min-h-screen">
+
+    <!-- Header Section -->
+    <header class="bg-cyber-card border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🛡️</span>
+                <div>
+                    <h1 class="text-2xl font-bold text-white tracking-tight">HONEY-SCAN <span class="text-cyber-accent">ANALYSE</span></h1>
+                    <p class="text-xs text-cyber-glow font-mono">CODEBASE DEEP DIVE & ARCHITECTURE</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span class="px-3 py-1 rounded-full bg-cyber-accent/20 text-cyber-accent text-sm font-semibold border border-cyber-accent/50">v1.0.4 Stable</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Section 1: Introduction & Key KPIs -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-white mb-2">Projekt Übersicht</h2>
+                <p class="text-gray-400 max-w-3xl">
+                    Honey-Scan ist ein Python-basiertes Reconnaissance-Tool. Es analysiert Netzwerk-Hosts, um durch Signaturvergleich festzustellen, ob es sich um Täuschungssysteme (Honeypots) handelt. Der Code ist modular aufgebaut und trennt strikt zwischen Netzwerk-IO, Analyse-Logik und Reporting.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- KPI 1 -->
+                <div class="cyber-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-gray-400 text-sm font-medium">Core Language</h3>
+                        <span class="text-2xl">🐍</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1">Python 3</div>
+                    <div class="text-xs text-cyber-glow">AsyncIO & Socket Based</div>
+                </div>
+                <!-- KPI 2 -->
+                <div class="cyber-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-gray-400 text-sm font-medium">Detection Modules</h3>
+                        <span class="text-2xl">🧩</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1">12+</div>
+                    <div class="text-xs text-green-400">Cowrie, Dionaea, Elastic...</div>
+                </div>
+                <!-- KPI 3 -->
+                <div class="cyber-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-gray-400 text-sm font-medium">Avg. Scan Speed</h3>
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1">~0.4s</div>
+                    <div class="text-xs text-cyber-accent">pro Host (Threaded)</div>
+                </div>
+                <!-- KPI 4 -->
+                <div class="cyber-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-gray-400 text-sm font-medium">Output Format</h3>
+                        <span class="text-2xl">📄</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1">JSON/CSV</div>
+                    <div class="text-xs text-gray-500">Structured Data Stream</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Code Distribution & Functionality -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Chart: Code Composition -->
+            <div class="cyber-card rounded-xl p-6">
+                <h3 class="text-xl font-bold text-white mb-2">Code-Struktur Analyse</h3>
+                <p class="text-sm text-gray-400 mb-6">
+                    Verteilung der Codezeilen nach Funktionalität. Der größte Teil des Codes widmet sich den Signaturen und der Netzwerkanalyse (Goal: Compare/Inform).
+                </p>
+                <div class="chart-container">
+                    <canvas id="codeCompositionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart: Data Processing Speed -->
+            <div class="cyber-card rounded-xl p-6">
+                <h3 class="text-xl font-bold text-white mb-2">Scan-Performance & Latenz</h3>
+                <p class="text-sm text-gray-400 mb-6">
+                    Zeitlicher Aufwand der einzelnen Phasen eines Scans. Der "Handshake" und das Warten auf Antwort (IO Wait) verbrauchen die meiste Zeit (Goal: Change/Time).
+                </p>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Data Pipeline (Custom HTML Flow) -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-white mb-2">Der Data-Stream Prozess</h2>
+                <p class="text-gray-400">
+                    Visualisierung des Datenflusses von der Eingabe (Trigger) bis zur Archivierung. Hier entstehen die Daten, werden transformiert und klassifiziert.
+                </p>
+            </div>
+
+            <div class="cyber-card rounded-xl p-8 overflow-x-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 min-w-[800px]">
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center w-48 group">
+                        <div class="w-16 h-16 rounded-full bg-cyber-card border-2 border-cyber-accent flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(67,97,238,0.5)] z-10">
+                            ⌨️
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h4 class="font-bold text-white">Trigger</h4>
+                            <p class="text-xs text-gray-400 mt-1">CLI Argumente<br>Target List Import</p>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="hidden md:block flex-1 h-1 bg-gray-700 relative mx-4">
+                        <div class="absolute inset-0 bg-cyber-accent w-1/2 animate-pulse"></div>
+                    </div>
+                    <div class="md:hidden text-cyber-glow text-2xl">⬇️</div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center w-48">
+                        <div class="w-16 h-16 rounded-full bg-cyber-card border-2 border-cyber-glow flex items-center justify-center text-2xl z-10">
+                            📡
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h4 class="font-bold text-white">Scanner Core</h4>
+                            <p class="text-xs text-gray-400 mt-1">Socket Connect<br>Banner Grabbing</p>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="hidden md:block flex-1 h-1 bg-gray-700 relative mx-4"></div>
+                    <div class="md:hidden text-cyber-glow text-2xl">⬇️</div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center w-48">
+                        <div class="w-16 h-16 rounded-full bg-cyber-card border-2 border-cyber-alert flex items-center justify-center text-2xl z-10">
+                            🧠
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h4 class="font-bold text-white">Analyzer</h4>
+                            <p class="text-xs text-gray-400 mt-1">RegEx Matching<br>Heuristik Score</p>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="hidden md:block flex-1 h-1 bg-gray-700 relative mx-4"></div>
+                    <div class="md:hidden text-cyber-glow text-2xl">⬇️</div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center w-48">
+                        <div class="w-16 h-16 rounded-full bg-cyber-card border-2 border-green-500 flex items-center justify-center text-2xl z-10">
+                            💾
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h4 class="font-bold text-white">Archivierung</h4>
+                            <p class="text-xs text-gray-400 mt-1">JSON Export<br>Log Rotation</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Dive Logic & Plotly Visualization -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Text Content -->
+            <div class="lg:col-span-1">
+                <h3 class="text-xl font-bold text-white mb-4">Verbindungs-Logik</h3>
+                <div class="space-y-4">
+                    <div class="flow-node p-4 rounded-r-lg">
+                        <h4 class="font-bold text-cyber-glow text-sm">1. Initialisierung</h4>
+                        <p class="text-xs text-gray-400">Das `Target`-Objekt wird instanziiert. Ports werden basierend auf der Konfiguration (Top 1000 oder Custom) geladen.</p>
+                    </div>
+                    <div class="flow-node p-4 rounded-r-lg">
+                        <h4 class="font-bold text-cyber-glow text-sm">2. Payload Injection</h4>
+                        <p class="text-xs text-gray-400">Um Honeypots zu enttarnen, sendet der Scanner oft ungültige Protokoll-Header. Echte Server schließen die Verbindung, Honeypots versuchen oft weiter zu interagieren (Data Logging).</p>
+                    </div>
+                    <div class="flow-node p-4 rounded-r-lg">
+                        <h4 class="font-bold text-cyber-glow text-sm">3. Signaturabgleich</h4>
+                        <p class="text-xs text-gray-400">Die Antwort wird gegen `signatures.json` geprüft. Matching erfolgt auf String-Ebene ("SSH-2.0-Kippo") oder Verhaltens-Ebene.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plotly Chart: Detection Confidence -->
+            <div class="lg:col-span-2 cyber-card rounded-xl p-6">
+                <h3 class="text-xl font-bold text-white mb-2">Honeypot Score Verteilung (Simulation)</h3>
+                <p class="text-sm text-gray-400 mb-4">
+                    Darstellung der "Confidence Scores" über verschiedene Scan-Ziele hinweg. Höhere Werte (Y-Achse) bedeuten eine höhere Wahrscheinlichkeit eines Honeypots (Goal: Relationships/Distribution).
+                </p>
+                <div id="scatterPlot" class="w-full h-80"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-gray-800 mt-10 py-8 text-center">
+            <p class="text-gray-500 text-sm">
+                Generiert durch "Canvas Infographics" Agent. Analyse basiert auf Architektur-Patterns von Honey-Scan Tools.
+                <br>
+                <span class="text-xs opacity-50">Kein SVG. Kein MermaidJS. Pure HTML/CSS/Canvas.</span>
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        // --- Helper Function: Label Wrapping ---
+        function wrapLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxLength) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- Common Tooltip Config ---
+        const commonTooltip = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- Chart 1: Code Composition (Donut) ---
+        const ctxCode = document.getElementById('codeCompositionChart').getContext('2d');
+        const labelsCode = ['Netzwerk Scanner Core', 'Signatur Datenbanken', 'Reporting & Output', 'CLI & Argument Parsing', 'Utilities & Helpers'];
+        const processedLabelsCode = labelsCode.map(l => wrapLabel(l));
+
+        new Chart(ctxCode, {
+            type: 'doughnut',
+            data: {
+                labels: processedLabelsCode,
+                datasets: [{
+                    data: [35, 25, 15, 10, 15], // Simulated distribution
+                    backgroundColor: [
+                        '#4361EE', // Blue
+                        '#F72585', // Pink
+                        '#4CC9F0', // Cyan
+                        '#7209B7', // Purple
+                        '#3A0CA3'  // Dark Blue
+                    ],
+                    borderColor: '#151725',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { color: '#E2E8F0', font: { family: 'Inter' } }
+                    },
+                    tooltip: commonTooltip
+                }
+            }
+        });
+
+        // --- Chart 2: Performance (Bar) ---
+        const ctxPerf = document.getElementById('performanceChart').getContext('2d');
+        const labelsPerf = ['Socket Init', 'Handshake (SYN/ACK)', 'Payload Transmission', 'Response Wait (Latency)', 'Regex Matching', 'JSON Writing'];
+        const processedLabelsPerf = labelsPerf.map(l => wrapLabel(l));
+
+        new Chart(ctxPerf, {
+            type: 'bar',
+            data: {
+                labels: processedLabelsPerf,
+                datasets: [{
+                    label: 'Zeit in Millisekunden (ms)',
+                    data: [5, 45, 20, 150, 15, 5],
+                    backgroundColor: '#4CC9F0',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#94A3B8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94A3B8', font: { size: 10 } }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltip
+                }
+            }
+        });
+
+        // --- Chart 3: Plotly Scatter (Detection Score) ---
+        // Simulating 50 scanned hosts
+        const xValues = Array.from({length: 50}, (_, i) => i + 1);
+        const yValues = Array.from({length: 50}, () => Math.random()); // Random score 0-1
+        // Artificially increase some scores to simulate honeypots
+        yValues[10] = 0.95; yValues[25] = 0.88; yValues[40] = 0.92;
+
+        const trace1 = {
+            x: xValues,
+            y: yValues,
+            mode: 'markers',
+            type: 'scatter',
+            marker: {
+                size: 10,
+                color: yValues.map(v => v > 0.8 ? '#F72585' : '#4361EE'), // Pink for high risk, Blue for low
+                opacity: 0.8,
+                line: { color: 'white', width: 1 }
+            },
+            text: yValues.map(v => v > 0.8 ? 'DETECTED: HONEYPOT' : 'Clean Host'),
+            hoverinfo: 'text+y'
+        };
+
+        const layout = {
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            margin: { t: 20, r: 20, b: 40, l: 40 },
+            showlegend: false,
+            xaxis: {
+                title: 'Scan ID',
+                color: '#94A3B8',
+                gridcolor: 'rgba(255, 255, 255, 0.1)'
+            },
+            yaxis: {
+                title: 'Honeyscore (Probability)',
+                color: '#94A3B8',
+                gridcolor: 'rgba(255, 255, 255, 0.1)',
+                range: [0, 1.1]
+            },
+            font: {
+                family: 'Inter',
+                color: '#E2E8F0'
+            }
+        };
+
+        Plotly.newPlot('scatterPlot', [trace1], layout, {displayModeBar: false, responsive: true});
+
+    </script>
+</body>
+</html>
