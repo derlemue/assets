@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
  
+## [1.2.9] - 2026-01-13
+
+### Changed
+- 🔗 **Documentation**: Standardized all HTML report links to use the official GitHub Pages URL format for proper web serving.
+
 ## [1.2.8] - 2026-01-13
 
 ### Changed
