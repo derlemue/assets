@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-01-13
+
+### Added
+- 📄 **Documentation**: Added links to Honey Scan Deep Research Report (Analysis 5 & 6) in README.
+- 📦 **Reports**: Included new HTML research reports for analysis.
+
 ## [Unreleased]
 
 ### Added
