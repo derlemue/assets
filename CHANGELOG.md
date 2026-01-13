@@ -9,6 +9,17 @@
 
 </div>
 
+## 🖼️ [1.3.1] — 2026-01-13
+> **The Gallery Refinement Release**
+> Extending the premium design language to every corner of the ecosystem.
+
+### 🎨 Visual & Identity
+- **Gallery Redesign**: Completely overhauled the [Asset Gallery READMEs](avatars/) with premium layouts, card-styles, and curated descriptions.
+- **Media Vaults**: Created new interactive gallery indices for `m3l1nda_clip` and `ph0x_clip` media projects.
+- **Consistency**: Unified typography and navigation across all sub-galleries.
+
+---
+
 ## 🌌 [1.3.0] — 2026-01-13
 > **The Aesthetic Revolution Release**
 > A complete visual and structural overhaul of the repository's identity, bringing a premium and curated experience to every visitor.

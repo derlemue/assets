@@ -1,85 +1,115 @@
-# Gallery: image
+<div align="center">
 
-> Auto-generated gallery of assets.
+# 📷 Gallery: lemueIO Images
+**Capturing the essence. A curated library of high-resolution photography and environmental imagery.**
+
+[**Back to Hub**](../../../README.md) • [**Timeline**](../../../CHANGELOG.md)
 
 ---
 
+</div>
+
+## ✨ Visual Assets
+
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-1.png" target="_blank">
-    <img src="./lemueIO-image-1.png" alt="lemueIO-image-1" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-1.png" target="_blank">
+      <img src="./lemueIO-image-1.png" alt="lemueIO-image-1" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-1</sub>
+  <sub><b>Cinematic Vision I</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-2.png" target="_blank">
-    <img src="./lemueIO-image-2.png" alt="lemueIO-image-2" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-2.png" target="_blank">
+      <img src="./lemueIO-image-2.png" alt="lemueIO-image-2" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-2</sub>
+  <sub><b>Environmental Perspective II</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-3.png" target="_blank">
-    <img src="./lemueIO-image-3.png" alt="lemueIO-image-3" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-3.png" target="_blank">
+      <img src="./lemueIO-image-3.png" alt="lemueIO-image-3" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-3</sub>
+  <sub><b>Tech-Noir Atmosphere III</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-4.png" target="_blank">
-    <img src="./lemueIO-image-4.png" alt="lemueIO-image-4" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-4.png" target="_blank">
+      <img src="./lemueIO-image-4.png" alt="lemueIO-image-4" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-4</sub>
+  <sub><b>Modern Infrastructure IV</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-5.png" target="_blank">
-    <img src="./lemueIO-image-5.png" alt="lemueIO-image-5" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-5.png" target="_blank">
+      <img src="./lemueIO-image-5.png" alt="lemueIO-image-5" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-5</sub>
+  <sub><b>Digital Horizon V</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-6.png" target="_blank">
-    <img src="./lemueIO-image-6.png" alt="lemueIO-image-6" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-6.png" target="_blank">
+      <img src="./lemueIO-image-6.png" alt="lemueIO-image-6" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-6</sub>
+  <sub><b>Abstract Connectivity VI</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-7.png" target="_blank">
-    <img src="./lemueIO-image-7.png" alt="lemueIO-image-7" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-7.png" target="_blank">
+      <img src="./lemueIO-image-7.png" alt="lemueIO-image-7" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-7</sub>
+  <sub><b>Future Concepts VII</b></sub>
 </div>
 
 ---
 
 <div align="center">
-  <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-8.png" target="_blank">
-    <img src="./lemueIO-image-8.png" alt="lemueIO-image-8" style="max-width: 100%;" />
-  </a>
+  <kbd>
+    <a href="https://raw.githubusercontent.com/derlemue/assets/refs/heads/main/avatars/lemueIO/image/lemueIO-image-8.png" target="_blank">
+      <img src="./lemueIO-image-8.png" alt="lemueIO-image-8" width="500" />
+    </a>
+  </kbd>
   <br>
-  <sub>lemueIO-image-8</sub>
+  <sub><b>The lemueIO Aesthetic VIII</b></sub>
 </div>
 
 ---
+
+<div align="center">
+
+ Crafted with 💜 by the **lemueIO Team**  
+ [**↑ Back to Top**](#-gallery-lemueio-images)
+
+</div>
