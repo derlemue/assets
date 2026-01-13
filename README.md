@@ -80,6 +80,8 @@ Our knowledge base of technical deep-dives and security infrastructure analysis.
     *   [Source](docs/reports/honey-scan-deepresearch-report-7.md)
 *   **Analysis 8: Digitale Festung (Deep Analysis)**
     *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/derlemue-assay-2.html) | [Source](docs/reports/derlemue-assay-2.md)
+*   **Analysis 9: The Cognitive Mesh (New Essay)**
+    *   [PDF](docs/reports/derlemue-essay-3.pdf) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
 
 </details>
 
@@ -97,8 +99,10 @@ Transforming complex technical data into high-retention interactive knowledge.
 
 | Resource Type | Focus | Engagement Link |
 | :--- | :--- | :--- |
-| **🗃️ Flashcards** | IT-Security & System Architecture. | [Begin StudySession](https://gemini.google.com/share/d3fa627f9466) |
-| **🏆 Knowledge Quiz** | Principles of Modern Cyber Defense. | [Test your Knowledge](https://gemini.google.com/share/87308833d310) |
+| **🗃️ Flashcards (Legacy)** | IT-Security & System Architecture (2024/25). | [Begin Session](https://gemini.google.com/share/6d21be492897) |
+| **🗃️ Flashcards (2026)** | Advanced Infrastructure Mapping. | [Start New Session](https://gemini.google.com/share/d3fa627f9466) |
+| **🏆 Knowledge Quiz (Legacy)** | Basic Principles of Cyber Defense. | [Test Knowledge](https://gemini.google.com/share/885821d498b1) |
+| **🏆 Knowledge Quiz (2026)** | Advanced Threat Scenarios. | [Challenge Yourself](https://gemini.google.com/share/87308833d310) |
 | **🛰️ Deep Dive** | Honey-Scan Architectural Internals. | [Analyze Logic](https://gemini.google.com/share/c0228e1f7f00) |
 | **🛠️ Technical Review** | Mastery of Security & API Structures. | [Review Protocol](https://gemini.google.com/share/35f119e4f579) |
 | **🚀 Expert Level** | Preparation for Advanced Ecosystem Use. | [Ascend to Expert](https://gemini.google.com/share/4a1b9df5e672) |
