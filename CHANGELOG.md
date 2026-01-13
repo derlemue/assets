@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
  
+## [1.2.8] - 2026-01-13
+
+### Changed
+- 🔄 **Revert**: Restored original filenames for Analysis 6 and 8 (`derlemue-essay-1.md`, `derlemue-assay-2.md`, etc.) per user request.
+- 🔗 **Documentation**: Updated all links in README to match the original filenames while preserving analysis titles and new content.
+
 ## [1.2.7] - 2026-01-13
 
 ### Added
