@@ -5,7 +5,7 @@
 > A centralized hub for all static assets, media snippets, design resources, and reports associated with the `lemueIO` ecosystem.
 > Ensure consistency. Embrace creativity.
 
-![Version](https://img.shields.io/badge/version-1.2.5-blue.svg?style=for-the-badge&logo=git)
+![Version](https://img.shields.io/badge/version-1.2.6-blue.svg?style=for-the-badge&logo=git)
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge&logo=open-source-initiative)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)
 ![Repo Size](https://img.shields.io/github/repo-size/derlemue/assets?style=for-the-badge&color=orange)
@@ -25,13 +25,18 @@ Location: `avatars/lemueIO/`
 
 | Category | Description | Path |
 | :--- | :--- | :--- |
-| **Logos** | Official brand marks and variations. | [`avatars/lemueIO/logo/`](avatars/lemueIO/logo/) |
-| **Images** | High-res photography and general imagery. | [`avatars/lemueIO/image/`](avatars/lemueIO/image/) |
-| **Flyers** | Marketing materials and handouts. | [`avatars/lemueIO/flyer/`](avatars/lemueIO/flyer/) |
+| **lemueIO** | Core brand assets (Logos, Images, Flyers). | [`avatars/lemueIO/`](avatars/lemueIO/) |
+| **lemue_headphones** | Lemue avatars wearing headphones (various colors). | [`avatars/lemue_headphones/`](avatars/lemue_headphones/) |
+| **lemue_git** | Lemue Git-themed avatars (various colors). | [`avatars/lemue_git/`](avatars/lemue_git/) |
+| **ph0x_git** | Ph0x Git-themed avatars. | [`avatars/ph0x_git/`](avatars/ph0x_git/) |
+| **m3l1nda_git** | M3l1nda Git and Matrix themed avatars. | [`avatars/m3l1nda_git/`](avatars/m3l1nda_git/) |
 
 ### 📹 Media
-Location: `avatars/m3l1nda_clip/`
-- Short clips and video snippets.
+
+| Project | Description | Path |
+| :--- | :--- | :--- |
+| **m3l1nda_clip** | Animated clips featuring M3l1nda. | [`avatars/m3l1nda_clip/`](avatars/m3l1nda_clip/) |
+| **ph0x_clip** | Data center and tech-themed clips feat. Ph0x. | [`avatars/ph0x_clip/`](avatars/ph0x_clip/) |
 
 ### 🔢 Naming Convention
 Files are standardized with a numeric suffix (e.g., `item-1.png`, `item-2.png`) to ensure consistent ordering and easy referencing.
@@ -71,6 +76,9 @@ We maintain detailed analysis and security reports within this repository.
 
 - **Analysis 6: Die Architektur der Wachsamkeit**:
   - [Markdown Essay](docs/reports/honey-scan-deepresearch-report-6.md)
+
+- **Analysis 7: Die digitale Festung des Autodidakten**:
+  - [Markdown Essay](docs/reports/honey-scan-deepresearch-report-7.md)
 
 - **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
 - **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)

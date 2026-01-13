@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
  
+## [1.2.6] - 2026-01-13
+
+### Added
+- 📄 **Documentation**: Added Analysis 7 (Die digitale Festung des Autodidakten) as Markdown essay.
+- 🖼️ **Assets**: Integrated new avatar categories (`lemue_headphones`, `lemue_git`, `ph0x_git`, `m3l1nda_git`) into README.
+- 📹 **Media**: Added `ph0x_clip` project to the media section.
+
+### Fixed
+- ✏️ **Naming**: Fixed typo in `lemue_git_red_light-1.png` filename.
+
 ## [1.2.5] - 2026-01-13
 
 ### Added
