@@ -1,4 +1,3 @@
-```markdown
 # Honey Scan: Technischer Analysebericht & Architektur-Roadmap
 
 **Status:** Draft / Deep Research  
@@ -93,6 +92,4 @@ sequenceDiagram
     Go-->>Attacker: Akzeptiert Verbindungen (Keep-Alive)
     end
 
-    rect rgb(255, 200, 20
-
-```
+    rect rgb(255, 200, 20)
