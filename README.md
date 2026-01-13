@@ -3,7 +3,7 @@
 # 🌌 lemueIO Assets & Resources
 **The curated heart of visual and technical intelligence for the lemueIO ecosystem.**
 
-[![Version](https://img.shields.io/badge/version-1.3.2-7B2CBF?style=for-the-badge&logo=git)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.3-7B2CBF?style=for-the-badge&logo=git)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-3C096C?style=for-the-badge&logo=open-source-initiative)](LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-5A189A?style=for-the-badge)](https://github.com/derlemue/assets)
 [![Repo Size](https://img.shields.io/github/repo-size/derlemue/assets?style=for-the-badge&color=240046)](https://github.com/derlemue/assets)
@@ -14,7 +14,7 @@
 > *"In the dance between code and creativity, consistency is our rhythm and innovation is our melody."*
 > This repository is not merely a storage of files; it is a testament to the pursuit of technical excellence and aesthetic harmony within the `lemueIO` space.
 
-[**Explore Assets**](#-visual-library) • [**View Reports**](#-intelligence-reports) • [**Learning Hub**](#-learning-laboratory) • [**Timeline**](CHANGELOG.md)
+[**Explore Assets**](#-visual-library) • [**View Reports**](#-intelligence-reports) • [**Audio Hub 🎙️**](https://derlemue.github.io/assets/audio-player.html) • [**Learning Hub**](#-learning-laboratory)
 
 </div>
 
@@ -65,17 +65,17 @@ Our knowledge base of technical deep-dives and security infrastructure analysis.
 <summary><b>View Analysis Catalog</b> (Click to collapse)</summary>
 
 *   **Analysis 1: Code & Architecture**
-    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-1.html) | [PDF](docs/reports/honey-scan-deepresearch-report-1.pdf) | [Source](docs/reports/honey-scan-deepresearch-report-1.md) | [Audio 🎙️](docs/reports/honey-scan-deepresearch-report-1.mp3)
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-1.html) | [PDF](docs/reports/honey-scan-deepresearch-report-1.pdf) | [Source](docs/reports/honey-scan-deepresearch-report-1.md) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
 *   **Analysis 2: Refactoring Roadmap**
-    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-2.html) | [PDF](docs/reports/honey-scan-deepresearch-report-2.pdf) | [Source](docs/reports/honey-scan-deepresearch-report-2.md) | [Audio 🎙️](docs/reports/honey-scan-deepresearch-report-2.mp3)
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-2.html) | [PDF](docs/reports/honey-scan-deepresearch-report-2.pdf) | [Source](docs/reports/honey-scan-deepresearch-report-2.md) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
 *   **Analysis 3: Hybrid Strategy**
-    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-3.html) | [Source](docs/reports/honey-scan-deepresearch-report-3.md) | [Audio 🎙️](docs/reports/honey-scan-deepresearch-report-3.mp3)
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-3.html) | [Source](docs/reports/honey-scan-deepresearch-report-3.md) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
 *   **Analysis 4: Architecture Evolution**
-    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-4.html) | [Audio 🎙️](docs/reports/honey-scan-deepresearch-report-4.mp3)
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-4.html) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
 *   **Analysis 5: Technical Roadmap**
     *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-5.html)
 *   **Analysis 6: Die Architektur der Wachsamkeit**
-    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/derlemue-assay-1.html) | [PDF](docs/reports/derlemue-essay-1.pdf) | [Source](docs/reports/derlemue-essay-1.md) | [Audio 🎙️](docs/reports/derlemue-essay-1.mp3)
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/derlemue-assay-1.html) | [PDF](docs/reports/derlemue-essay-1.pdf) | [Source](docs/reports/derlemue-essay-1.md) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
 *   **Analysis 7: Digitale Festung des Autodidakten**
     *   [Source](docs/reports/honey-scan-deepresearch-report-7.md)
 *   **Analysis 8: Digitale Festung (Deep Analysis)**

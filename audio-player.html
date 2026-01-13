@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎙️ Audio Intelligence | lemueIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0118;
+            --accent-purple: #7b2cbf;
+            --accent-dark: #240046;
+            --text-color: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(123, 44, 191, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(60, 9, 108, 0.15) 0%, transparent 40%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 25px;
+        }
+
+        .audio-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        .audio-info h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .audio-info p {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        audio {
+            width: 100%;
+            height: 45px;
+            filter: invert(100%) hue-rotate(180deg) brightness(1.5);
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-bottom: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #9d4edd;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .audio-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎙️ Audio Intelligence</h1>
+        <p class="subtitle">Deep-dive analysis summaries and technical architectural intelligence.</p>
+        <a href="https://github.com/derlemue/assets" class="back-link">← Return to lemueIO Assets</a>
+    </header>
+
+    <div class="container">
+        <!-- Analysis 6 -->
+        <article class="audio-card">
+            <div class="audio-info">
+                <h2>Analysis 6: Die Architektur der Wachsamkeit</h2>
+                <p>Tiefenanalyse von lemueIO und dem Wirken von derlemue.</p>
+            </div>
+            <audio controls>
+                <source src="docs/reports/derlemue-essay-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </article>
+
+        <!-- Analysis 1 -->
+        <article class="audio-card">
+            <div class="audio-info">
+                <h2>Analysis 1: Code & Architektur Analysis</h2>
+                <p>Prozess-Visualisierung und technische Analyse der Honey-Scan Basis.</p>
+            </div>
+            <audio controls>
+                <source src="docs/reports/honey-scan-deepresearch-report-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </article>
+
+        <!-- Analysis 2 -->
+        <article class="audio-card">
+            <div class="audio-info">
+                <h2>Analysis 2: Refactoring & Architecture Roadmap</h2>
+                <p>Prozess-Mapping und strategische Planung der Skript-Architektur.</p>
+            </div>
+            <audio controls>
+                <source src="docs/reports/honey-scan-deepresearch-report-2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </article>
+
+        <!-- Analysis 3 -->
+        <article class="audio-card">
+            <div class="audio-info">
+                <h2>Analysis 3: Infrastructure & Hybrid Strategy</h2>
+                <p>Audit der Sicherheits-Intelligenz und Infrastruktur-Roadmap.</p>
+            </div>
+            <audio controls>
+                <source src="docs/reports/honey-scan-deepresearch-report-3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </article>
+
+        <!-- Analysis 4 -->
+        <article class="audio-card">
+            <div class="audio-info">
+                <h2>Analysis 4: Architecture & Roadmap Report</h2>
+                <p>Zusammenfassender Bericht der technologischen Evolution.</p>
+            </div>
+            <audio controls>
+                <source src="docs/reports/honey-scan-deepresearch-report-4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </article>
+    </div>
+
+    <footer>
+        <p>Crafted with 💜 by the lemueIO Team</p>
+        <p>© 2026 lemueIO Ecosystem</p>
+    </footer>
+
+</body>
+</html>

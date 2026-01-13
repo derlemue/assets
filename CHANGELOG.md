@@ -9,6 +9,17 @@
 
 </div>
 
+## 🎙️ [1.3.3] — 2026-01-13
+> **The Audio Hub Release**
+> Launching a dedicated, premium portal for all analysis audio summaries.
+
+### 🎧 Audio & Interactivity
+- **Audio Hub**: Created [audio-player.html](audio-player.html) — a centralized, glassmorphic audio portal for deep-dive intelligence.
+- **README Integration**: Linked the new Audio Hub in the primary navigation and individual analysis listings.
+- **UX Refinement**: Transitioned from direct file links to a professional, web-based player experience.
+
+---
+
 ## 🎙️ [1.3.2] — 2026-01-13
 ### Added
 - 🎤 **Audio Intelligence**: Integrated the new audio summary for **Analysis 6** (`derlemue-essay-1.mp3`) into the global catalog.
