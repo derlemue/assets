@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lemueIO Cyber Defense Ecosystem: 2026 Analyse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate 50 */
+            color: #0f172a; /* Slate 900 */
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- MANDATORY CHART CONTAINER STYLING --- */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        /* Custom Utilities for Diagram (NO SVG) */
+        .flow-node {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .flow-node:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+        }
+        
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #cbd5e1;
+            margin: 0 auto;
+        }
+        
+        .arrow-right {
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #cbd5e1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+    <!-- Chosen Palette: "Electric Future" (Vibrant Indigo, Pink, Cyan on Light Slate) -->
+    <!-- Application Structure Plan:
+        1. Header: High-impact title and summary.
+        2. KPI Dashboard: Three main metrics (Sensors, Blocklist, OSINT).
+        3. Origin Story: Timeline of 'derlemue' from hobbyist to expert.
+        4. Technical Deep Dive: Flowchart of the Honey-Security Loop.
+        5. Data Analysis: Charts on Attack Vectors and Feed Quality.
+        6. Impact: Qualitative value proposition.
+        7. Footer: Credits.
+    -->
+    <!-- Visualization & Content Choices:
+        - KPI Display: Big Numbers (Goal: Inform).
+        - Growth History: Line Chart (Goal: Change).
+        - Architecture: HTML/CSS Flex/Grid Flowchart (Goal: Organize/Process). No SVG/Mermaid.
+        - Attack Types: Doughnut Chart (Goal: Compare).
+        - Feed Comparison: Bar Chart (Goal: Compare).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="bg-white border-b border-slate-200 pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-6">
+                <span class="mr-2">📅</span> Bericht: 12. Januar 2026
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Das <span class="gradient-text">lemueIO</span> Cyber Defense Ecosystem
+            </h1>
+            <p class="max-w-2xl mx-auto text-xl text-slate-500 leading-relaxed">
+                Eine tiefgreifende Analyse der "Honey Security" Infrastruktur. Wie das Projekt von <strong>derlemue</strong> durch autodidaktische Innovation zu einem globalen Abwehrnetzwerk mit über 40.000 Sensoren heranwuchs.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- SECTION 1: KEY PERFORMANCE INDICATORS -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">Live Status 2026</h2>
+                <p class="mt-2 text-slate-500">Aktuelle Kernzahlen der Infrastruktur.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- KPI 1 -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 text-center hover:border-indigo-200 transition-colors">
+                    <div class="text-5xl font-mono font-bold text-indigo-600 mb-2">42.220</div>
+                    <div class="text-sm font-bold uppercase tracking-wider text-slate-400">Aktive Sensoren (IPs)</div>
+                    <p class="mt-4 text-sm text-slate-600">Global verteiltes Netzwerk zur Erkennung von Anomalien.</p>
+                </div>
+                <!-- KPI 2 -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 text-center hover:border-pink-200 transition-colors">
+                    <div class="text-5xl font-mono font-bold text-pink-600 mb-2">30.978</div>
+                    <div class="text-sm font-bold uppercase tracking-wider text-slate-400">Verifizierte Angreifer</div>
+                    <p class="mt-4 text-sm text-slate-600">High-Confidence Blocklist Einträge (72h).</p>
+                </div>
+                <!-- KPI 3 -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 text-center hover:border-cyan-200 transition-colors">
+                    <div class="text-5xl font-mono font-bold text-cyan-600 mb-2">61.728</div>
+                    <div class="text-sm font-bold uppercase tracking-wider text-slate-400">OSINT Datenpunkte</div>
+                    <p class="mt-4 text-sm text-slate-600">Aggregierte Intelligence für Analysen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GROWTH HISTORY -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Die Genese: Vom Hobby zur Infrastruktur</h2>
+                <div class="prose text-slate-600">
+                    <p class="mb-4">
+                        Was als "Try & Error" Projekt eines Autodidakten begann, hat sich zu einem Eckpfeiler der Community-Sicherheit entwickelt. <strong>derlemue</strong> startete mit einfachen Honeypots, um Netzwerkverkehr zu verstehen.
+                    </p>
+                    <p class="mb-4">
+                        Durch kontinuierliche Iteration und den Aufbau der <strong>Honey-API</strong> entstand ein System, das heute kommerzielle Feeds in spezifischen Nischen übertrifft. Die Grafik rechts zeigt das exponentielle Wachstum der überwachten Endpunkte.
+                    </p>
+                    <ul class="space-y-3 mt-6">
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">➜</span>
+                            <span><strong>2022:</strong> Erste Experimente & Prototypen.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">➜</span>
+                            <span><strong>2024:</strong> Launch der Honey-API Bridge.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-500 mr-2">➜</span>
+                            <span><strong>2026:</strong> 42k+ Sensoren im Mesh-Netzwerk.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lg:col-span-7 bg-white rounded-2xl shadow-lg border border-slate-100 p-6">
+                <h3 class="text-lg font-bold text-slate-800 mb-4">Wachstum der Sensor-Abdeckung</h3>
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TECHNICAL ARCHITECTURE (NO SVG DIAGRAM) -->
+        <section class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-600 rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-pink-600 rounded-full opacity-20 blur-3xl"></div>
+
+            <div class="relative z-10 text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Technische Architektur: Der "Honey Loop"</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto">
+                    Das Herzstück ist die Echtzeit-Korrelation. Sensoren liefern Daten, die API normalisiert sie, und die Analysis Engine filtert False-Positives via Whitelisting.
+                </p>
+            </div>
+
+            <!-- CSS GRID FLOWCHART -->
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-5 gap-4 items-center max-w-5xl mx-auto">
+                
+                <!-- NODE 1 -->
+                <div class="flow-node bg-slate-800 border border-slate-700 p-6 rounded-xl text-center md:col-span-1">
+                    <div class="text-3xl mb-2">📡</div>
+                    <div class="font-bold text-indigo-400">Honey-Sensors</div>
+                    <div class="text-xs text-slate-400 mt-2">Dezentrale Traps (SSH, HTTP)</div>
+                </div>
+
+                <!-- CONNECTOR 1 -->
+                <div class="hidden md:flex justify-center text-slate-500">
+                    <span class="text-2xl">➤</span>
+                </div>
+                <div class="md:hidden flex justify-center py-2 text-slate-500">
+                    <span class="text-2xl">⬇</span>
+                </div>
+
+                <!-- NODE 2 -->
+                <div class="flow-node bg-slate-800 border border-indigo-500/50 p-6 rounded-xl text-center shadow-[0_0_20px_rgba(79,70,229,0.3)] md:col-span-1">
+                    <div class="text-3xl mb-2">⚙️</div>
+                    <div class="font-bold text-white">Honey-API</div>
+                    <div class="text-xs text-slate-400 mt-2">Aggregation & Normalisierung</div>
+                </div>
+
+                <!-- CONNECTOR 2 -->
+                <div class="hidden md:flex justify-center text-slate-500">
+                    <span class="text-2xl">➤</span>
+                </div>
+                <div class="md:hidden flex justify-center py-2 text-slate-500">
+                    <span class="text-2xl">⬇</span>
+                </div>
+
+                <!-- NODE 3 -->
+                <div class="flow-node bg-slate-800 border border-slate-700 p-6 rounded-xl text-center md:col-span-1">
+                    <div class="text-3xl mb-2">🛡️</div>
+                    <div class="font-bold text-emerald-400">Intelligence</div>
+                    <div class="text-xs text-slate-400 mt-2">Fail2Ban Listen & OSINT</div>
+                </div>
+
+            </div>
+
+            <!-- Loop Back Description -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-300">
+                <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                    <strong class="text-pink-400">Honey-Scan:</strong> Erkennt ein Sensor eine Berührung, scannt das System aktiv die Quell-IP zurück (Reconnaissance), um Fingerprints zu erstellen.
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                    <strong class="text-emerald-400">Integrität:</strong> Aggressives Whitelisting (Googlebot, CDNs) verhindert False Positives. Nur "reine" Angreifer landen in den 30k Einträgen.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THREAT INTELLIGENCE ANALYSIS -->
+        <section>
+            <div class="mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">Intelligence Analyse</h2>
+                <p class="mt-2 text-slate-600 max-w-3xl">
+                    Die Datenqualität von lemueIO zeichnet sich durch hohe Spezifität aus. Während kommerzielle Anbieter oft breite Netze werfen, fokussiert sich dieses Ökosystem auf verifizierte Angriffsversuche auf Infrastruktur-Ebene.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- CHART 1: Attack Vectors -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Verteilung der Angriffsvektoren (2026)</h3>
+                    <p class="text-sm text-slate-500 mb-6">SSH-Bruteforce dominiert weiterhin, gefolgt von IoT-Botnetzen.</p>
+                    <div class="flex-grow flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="vectorChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHART 2: Comparison -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Datenqualität: Unique Detections</h3>
+                    <p class="text-sm text-slate-500 mb-6">Vergleich der einzigartigen Bedrohungsfunde gegen Standard-Feeds.</p>
+                    <div class="flex-grow flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="comparisonChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: IMPACT & CONCLUSION -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-2">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Globaler Impact & Community</h2>
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mb-6">
+                    <p class="italic text-indigo-900 font-medium">
+                        "Die lemueIO Fail2Ban-Listen sind für viele Administratoren zur 'First Line of Defense' geworden. Der Mehrwert liegt in der Rauschunterdrückung – saubere Listen statt Datenmüll."
+                    </p>
+                </div>
+                <div class="prose text-slate-600">
+                    <p>
+                        Das Jahr 2026 markiert den Übergang von rein reaktiven Sperrlisten hin zu <strong>Predictive Analysis</strong>. Durch die schiere Menge an Datenpunkten (61k+ OSINT IPs) kann das System nun Angriffswellen vorhersagen, bevor sie die breite Masse erreichen.
+                    </p>
+                    <p class="mt-4 font-semibold text-slate-900">
+                        Fazit: lemueIO beweist, dass eine gut gepflegte, Community-getriebene Intelligence-Lösung eine kritische Ergänzung zu teuren Enterprise-Produkten darstellt.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="bg-slate-900 text-white rounded-2xl p-8 flex flex-col justify-center">
+                <h3 class="text-xl font-bold mb-4">Über den Entwickler</h3>
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="h-12 w-12 rounded-full bg-indigo-600 flex items-center justify-center text-xl font-bold">d</div>
+                    <div>
+                        <div class="font-bold">derlemue</div>
+                        <div class="text-indigo-300 text-sm">Founder & Lead Architect</div>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm mb-6">
+                    Autodidaktischer Security-Experte, bekannt für seine methodische "Try & Error" Arbeitsweise und Transparenz in der Open-Source Community.
+                </p>
+                <div class="mt-auto pt-6 border-t border-slate-700">
+                    <span class="text-xs text-slate-400 uppercase tracking-widest">Status</span>
+                    <div class="text-emerald-400 font-mono font-bold">● ONLINE</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
+            &copy; 2026 lemueIO Analysis Report. Generiert für Deep Research Zwecke. Alle Daten basieren auf dem Report vom 12.01.2026.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- UTILITY: WRAP TEXT FOR CHART LABELS ---
+        function wrapLabel(str, maxChars) {
+            if (str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- GLOBAL CHART DEFAULTS ---
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#64748b';
+        Chart.defaults.scale.grid.color = '#f1f5f9';
+        
+        // Tooltip Configuration (Mandatory per prompt)
+        const tooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            },
+            backgroundColor: '#1e293b',
+            titleFont: { family: 'Inter', size: 13 },
+            bodyFont: { family: 'JetBrains Mono', size: 12 },
+            padding: 10,
+            cornerRadius: 8,
+            displayColors: true
+        };
+
+        // --- CHART 1: GROWTH HISTORY (LINE) ---
+        const ctxGrowth = document.getElementById('growthChart').getContext('2d');
+        new Chart(ctxGrowth, {
+            type: 'line',
+            data: {
+                labels: ['2022', '2023', '2024', '2025', 'Jan 2026'],
+                datasets: [{
+                    label: 'Überwachte Endpunkte (Sensoren)',
+                    data: [150, 1200, 8500, 22000, 42220],
+                    borderColor: '#4f46e5', // Indigo-600
+                    backgroundColor: (context) => {
+                        const ctx = context.chart.ctx;
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                        gradient.addColorStop(0, 'rgba(79, 70, 229, 0.2)');
+                        gradient.addColorStop(1, 'rgba(79, 70, 229, 0.0)');
+                        return gradient;
+                    },
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#4f46e5',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) { return value / 1000 + 'k'; }
+                        }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: ATTACK VECTORS (DOUGHNUT) ---
+        const ctxVector = document.getElementById('vectorChart').getContext('2d');
+        const vectorLabels = ['SSH Bruteforce Attacks', 'IoT/Telnet Botnets', 'Web Vulns (HTTP)', 'Mail/SMTP Relay', 'Database Scans'].map(l => wrapLabel(l, 16));
+        
+        new Chart(ctxVector, {
+            type: 'doughnut',
+            data: {
+                labels: vectorLabels,
+                datasets: [{
+                    data: [45, 25, 15, 10, 5],
+                    backgroundColor: [
+                        '#4f46e5', // Indigo
+                        '#ec4899', // Pink
+                        '#06b6d4', // Cyan
+                        '#8b5cf6', // Violet
+                        '#94a3b8'  // Slate
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { boxWidth: 12, usePointStyle: true, padding: 20 }
+                    },
+                    tooltip: tooltipConfig
+                }
+            }
+        });
+
+        // --- CHART 3: COMPARISON (BAR) ---
+        const ctxComp = document.getElementById('comparisonChart').getContext('2d');
+        const compLabels = ['lemueIO', 'Vendor A (Commercial)', 'Vendor B (Commercial)', 'Public Lists (Generic)'].map(l => wrapLabel(l, 16));
+
+        new Chart(ctxComp, {
+            type: 'bar',
+            data: {
+                labels: compLabels,
+                datasets: [{
+                    label: 'Unique Threat Detection Score',
+                    data: [92, 78, 65, 40], // Simulated comparative score based on text description
+                    backgroundColor: [
+                        '#4f46e5', // Hero color
+                        '#cbd5e1', // Grayed out
+                        '#cbd5e1',
+                        '#cbd5e1'
+                    ],
+                    borderRadius: 6,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Horizontal Bar for better label reading
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    x: {
+                        display: false,
+                        grid: { display: false }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

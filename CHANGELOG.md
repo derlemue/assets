@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
  
+## [1.2.7] - 2026-01-13
+
+### Added
+- 🧠 **Learning Resources**: Added a new section with interactive Flashcards and Quizzes via Gemini share links.
+- 📄 **Documentation**: Linked Analysis 8 (Die digitale Festung - Deep Analysis) in Markdown and HTML.
+- 📄 **Documentation**: Added PDF and HTML versions for Analysis 6.
+
 ## [1.2.6] - 2026-01-13
 
 ### Added

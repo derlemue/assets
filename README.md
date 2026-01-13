@@ -5,12 +5,12 @@
 > A centralized hub for all static assets, media snippets, design resources, and reports associated with the `lemueIO` ecosystem.
 > Ensure consistency. Embrace creativity.
 
-![Version](https://img.shields.io/badge/version-1.2.6-blue.svg?style=for-the-badge&logo=git)
+![Version](https://img.shields.io/badge/version-1.2.7-blue.svg?style=for-the-badge&logo=git)
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge&logo=open-source-initiative)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)
 ![Repo Size](https://img.shields.io/github/repo-size/derlemue/assets?style=for-the-badge&color=orange)
 
-[Explore Assets](#-contents) • [View Reports](#-reports) • [Changelog](CHANGELOG.md)
+[Explore Assets](#-contents) • [View Reports](#-reports) • [Learning Resources](#-learning-resources) • [Changelog](CHANGELOG.md)
 
 </div>
 
@@ -75,10 +75,16 @@ We maintain detailed analysis and security reports within this repository.
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-5.html)
 
 - **Analysis 6: Die Architektur der Wachsamkeit**:
+  - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-6.html)
+  - [PDF Version](docs/reports/honey-scan-deepresearch-report-6.pdf)
   - [Markdown Essay](docs/reports/honey-scan-deepresearch-report-6.md)
 
 - **Analysis 7: Die digitale Festung des Autodidakten**:
   - [Markdown Essay](docs/reports/honey-scan-deepresearch-report-7.md)
+
+- **Analysis 8: Die digitale Festung (Deep Analysis)**:
+  - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-8.html)
+  - [Markdown Essay](docs/reports/honey-scan-deepresearch-report-8.md)
 
 - **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
 - **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)
@@ -89,6 +95,20 @@ We maintain detailed analysis and security reports within this repository.
   - [Version 1 (Original)](docs/reports/honey-scan-refactoring-roadmap-1.pdf) | [German](docs/reports/honey-scan-refactoring-roadmap-1-de.pdf)
   - [Version 2 (Updated)](docs/reports/honey-scan-refactoring-roadmap-2.pdf) | [German](docs/reports/honey-scan-refactoring-roadmap-2-de.pdf)
 
+
+---
+
+## 🧠 Learning Resources
+
+Enhance your understanding of the `lemueIO` ecosystem and cybersecurity principles with these interactive resources:
+
+### 🗃️ Flashcards & Quizzes
+- [Interactive Flashcards: IT-Security & Architecture](https://gemini.google.com/share/6d21be492897)
+- [Knowledge Quiz: Cyber Defense Principles](https://gemini.google.com/share/885821d498b1)
+- [Deep Dive: Honey-Scan Architecture Quiz](https://gemini.google.com/share/c0228e1f7f00)
+- [Technical Review: Security & APIs](https://gemini.google.com/share/35f119e4f579)
+- [Mastering lemueIO: Expert Level Prep](https://gemini.google.com/share/4a1b9df5e672)
+- [Final Assessment: Comprehensive Review](https://gemini.google.com/share/230ed756ea0b)
 
 ---
 
