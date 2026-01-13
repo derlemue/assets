@@ -81,7 +81,9 @@ Our knowledge base of technical deep-dives and security infrastructure analysis.
 *   **Analysis 8: Digitale Festung (Deep Analysis)**
     *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/derlemue-assay-2.html) | [Source](docs/reports/derlemue-assay-2.md)
 *   **Analysis 9: The Cognitive Mesh (New Essay)**
-    *   [PDF (DE)](docs/reports/derlemue-essay-3.pdf) | [PDF (EN)](docs/reports/derlemue-essay-3-en.pdf) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/derlemue-assay-3.html) | [PDF (DE)](docs/reports/derlemue-essay-3.pdf) | [PDF (EN)](docs/reports/derlemue-essay-3-en.pdf) | [Audio 🎙️](https://derlemue.github.io/assets/audio-player.html)
+*   **Analysis 10: Executive Dossier 2026**
+    *   [**Interactive Web Report**](https://derlemue.github.io/assets/docs/reports/derlemue-assay-4.html)
 
 </details>
 
