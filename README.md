@@ -97,8 +97,8 @@ Transforming complex technical data into high-retention interactive knowledge.
 
 | Resource Type | Focus | Engagement Link |
 | :--- | :--- | :--- |
-| **🗃️ Flashcards** | IT-Security & System Architecture. | [Begin StudySession](https://gemini.google.com/share/6d21be492897) |
-| **🏆 Knowledge Quiz** | Principles of Modern Cyber Defense. | [Test your Knowledge](https://gemini.google.com/share/885821d498b1) |
+| **🗃️ Flashcards** | IT-Security & System Architecture. | [Begin StudySession](docs/learning/maps.html) |
+| **🏆 Knowledge Quiz** | Principles of Modern Cyber Defense. | [Test your Knowledge](docs/learning/quiz.html) |
 | **🛰️ Deep Dive** | Honey-Scan Architectural Internals. | [Analyze Logic](https://gemini.google.com/share/c0228e1f7f00) |
 | **🛠️ Technical Review** | Mastery of Security & API Structures. | [Review Protocol](https://gemini.google.com/share/35f119e4f579) |
 | **🚀 Expert Level** | Preparation for Advanced Ecosystem Use. | [Ascend to Expert](https://gemini.google.com/share/4a1b9df5e672) |

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitales Dossier: Thomas Ledermüller | Executive Security Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Warm Corporate Tech (Stone/Warm Gray base with Slate and Teal accents) -->
+    <!-- Application Structure Plan: 
+         The app is designed as an interactive executive summary dashboard, split into 5 thematic modules:
+         1. 'The Hybrid Profile': High-level intro and value proposition (Pharma + Security).
+         2. 'Career Decoder': A timeline translation tool that converts Engineering experience into Security assets.
+         3. 'Technical Arsenal': Data visualization of open source projects (honey-scan) and code metrics.
+         4. 'Infrastructure Lab': An interactive topology map of his home lab to demonstrate networking mastery.
+         5. 'Leadership Vision': A comparative view of his management philosophy.
+         
+         Flow: Linear scroll with sticky navigation for random access.
+         Why: Recruiters need a quick overview (Top), Technical leads need code details (Middle), C-Levels need business translation (Bottom).
+    -->
+    <!-- Visualization & Content Choices:
+         1. Radar Chart (Chart.js): Visualizing the balance between Management, Dev, Red Team, and Blue Team skills.
+         2. Interactive Timeline (HTML/JS): Clickable career milestones that reveal the "Hidden Security Value" in standard engineering roles.
+         3. Code Stats (Chart.js Bar): Visualizing the architecture of 'honey-scan' (Lines of Code vs. Modules) to prove structural thinking.
+         4. Homelab Topology (CSS Grid): Interactive server blocks that explain the 'Why' behind each component (e.g., 'Proxmox = Virtualization Mastery').
+         5. Vision Toggle (JS Text Swap): Switching between 'Technical View' and 'Business View' for key leadership statements.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 350px; 
+            max-height: 400px;
+        }
+        .lab-node { transition: all 0.3s ease; }
+        .lab-node:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background-color: #e5e7eb; }
+        .active-tab { border-bottom: 2px solid #0f766e; color: #0f766e; font-weight: 600; }
+        .inactive-tab { color: #6b7280; }
+        .inactive-tab:hover { color: #374151; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold tracking-tight text-stone-900">TL<span class="text-teal-600">.sec</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('profile')" class="text-sm font-medium hover:text-teal-600 transition">Profil</button>
+                    <button onclick="scrollToSection('career')" class="text-sm font-medium hover:text-teal-600 transition">Karriere-DNA</button>
+                    <button onclick="scrollToSection('tech')" class="text-sm font-medium hover:text-teal-600 transition">Code & Projects</button>
+                    <button onclick="scrollToSection('lab')" class="text-sm font-medium hover:text-teal-600 transition">Infrastructure</button>
+                    <button onclick="scrollToSection('vision')" class="text-sm font-medium hover:text-teal-600 transition">Vision</button>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="px-3 py-1 text-xs font-semibold bg-teal-100 text-teal-800 rounded-full">Open for Lead</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Executive Summary -->
+    <header id="profile" class="pt-16 pb-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-teal-600 font-semibold tracking-wide uppercase text-sm mb-2">Executive Dossier</h2>
+                <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6 leading-tight">
+                    Vom Produktions-Engineering zur <span class="text-teal-600">Cyber-Resilienz</span>.
+                </h1>
+                <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                    Thomas Ledermüller (alias <code>derlemue</code>) verbindet 23 Jahre Prozess-Disziplin aus der Pharma-Industrie mit offensivem Security-Mindset. Ein Profil für Unternehmen, die einen "Vorarbeiter" im Red Teaming suchen, der Business-Relevanz nicht erst lernen muss.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="bg-stone-100 px-4 py-2 rounded-lg border border-stone-200">
+                        <span class="block text-2xl font-bold text-stone-900">23</span>
+                        <span class="text-xs text-stone-500 uppercase">Jahre Engineering</span>
+                    </div>
+                    <div class="bg-teal-50 px-4 py-2 rounded-lg border border-teal-100">
+                        <span class="block text-2xl font-bold text-teal-700">Go/Py</span>
+                        <span class="text-xs text-teal-600 uppercase">Tooling Stack</span>
+                    </div>
+                    <div class="bg-stone-100 px-4 py-2 rounded-lg border border-stone-200">
+                        <span class="block text-2xl font-bold text-stone-900">100%</span>
+                        <span class="text-xs text-stone-500 uppercase">Self-Hosted</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Radar Chart Container -->
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-100 shadow-sm flex flex-col items-center justify-center">
+                <div class="chart-container">
+                    <canvas id="skillRadar"></canvas>
+                </div>
+                <p class="text-xs text-center text-stone-400 mt-4">Multidisziplinäres Kompetenzprofil</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: Career Translation (Pharma DNA) -->
+    <section id="career" class="py-16 bg-stone-50 border-t border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Die Pharma-DNA als Security Asset</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto">
+                    Warum ein Ingenieur aus der Produktion der bessere Security Leader ist. Klicken Sie auf die Pharma-Skills, um die Übersetzung in die Cybersecurity-Welt zu sehen.
+                </p>
+            </div>
+
+            <div class="relative space-y-8 pl-8 md:pl-0">
+                <div class="timeline-line md:left-1/2 md:-ml-[1px]"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group cursor-pointer" onclick="toggleTranslation('card1')">
+                    <div class="md:w-5/12 order-1 md:text-right p-4 bg-white rounded-lg shadow-sm border border-stone-200 hover:border-teal-400 transition">
+                        <h3 class="text-lg font-bold text-stone-800">Prozessvalidierung & GxP</h3>
+                        <p class="text-sm text-stone-500">Roche Diagnostics (Engineering)</p>
+                        <div class="mt-2 text-stone-600 text-sm">Strikte Einhaltung regulatorischer Vorgaben in der Produktion.</div>
+                    </div>
+                    
+                    <div class="absolute left-[-26px] md:left-1/2 md:-ml-4 w-8 h-8 rounded-full bg-teal-600 flex items-center justify-center text-white font-bold z-10 shadow-md">
+                        &#8644;
+                    </div>
+
+                    <div id="card1-target" class="md:w-5/12 order-2 p-4 bg-teal-50 rounded-lg shadow-inner border border-teal-100 hidden md:block opacity-100 transition-all duration-300">
+                        <h3 class="text-lg font-bold text-teal-800">Compliance & Auditierung</h3>
+                        <p class="text-sm text-teal-600">Transferable Skill</p>
+                        <div class="mt-2 text-teal-700 text-sm">Verständnis für ISO27001 und Dokumentationspflichten ist bereits "in Fleisch und Blut". Keine Einarbeitungszeit bei regulatorischen Hürden.</div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group cursor-pointer" onclick="toggleTranslation('card2')">
+                     <div id="card2-target" class="md:w-5/12 order-2 md:order-1 md:text-right p-4 bg-teal-50 rounded-lg shadow-inner border border-teal-100 hidden md:block transition-all duration-300">
+                        <h3 class="text-lg font-bold text-teal-800">Incident Response</h3>
+                        <p class="text-sm text-teal-600">Transferable Skill</p>
+                        <div class="mt-2 text-teal-700 text-sm">Stressresistenz bei Systemausfällen. Fähigkeit, Teams in Krisensituationen ruhig und strukturiert zu koordinieren.</div>
+                    </div>
+
+                    <div class="absolute left-[-26px] md:left-1/2 md:-ml-4 w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold z-10 shadow-md">
+                        &#9889;
+                    </div>
+
+                    <div class="md:w-5/12 order-1 md:order-2 p-4 bg-white rounded-lg shadow-sm border border-stone-200 hover:border-amber-400 transition">
+                        <h3 class="text-lg font-bold text-stone-800">High-Availability Produktion</h3>
+                        <p class="text-sm text-stone-500">Anlagenverfügbarkeit</p>
+                        <div class="mt-2 text-stone-600 text-sm">Verantwortung für 24/7 Produktionslinien, wo jede Minute Stillstand immense Kosten verursacht.</div>
+                    </div>
+                </div>
+
+                 <!-- Timeline Item 3 -->
+                 <div class="relative flex flex-col md:flex-row items-center justify-between group cursor-pointer" onclick="toggleTranslation('card3')">
+                    <div class="md:w-5/12 order-1 md:text-right p-4 bg-white rounded-lg shadow-sm border border-stone-200 hover:border-teal-400 transition">
+                        <h3 class="text-lg font-bold text-stone-800">Führung & Mentoring</h3>
+                        <p class="text-sm text-stone-500">Teamleitung</p>
+                        <div class="mt-2 text-stone-600 text-sm">Jahrelange Erfahrung in der Führung heterogener Teams und Ausbildung von Fachkräften.</div>
+                    </div>
+                    
+                    <div class="absolute left-[-26px] md:left-1/2 md:-ml-4 w-8 h-8 rounded-full bg-teal-600 flex items-center justify-center text-white font-bold z-10 shadow-md">
+                        &#10004;
+                    </div>
+
+                    <div id="card3-target" class="md:w-5/12 order-2 p-4 bg-teal-50 rounded-lg shadow-inner border border-teal-100 hidden md:block opacity-100 transition-all duration-300">
+                        <h3 class="text-lg font-bold text-teal-800">SOC / Red Team Lead</h3>
+                        <p class="text-sm text-teal-600">Transferable Skill</p>
+                        <div class="mt-2 text-teal-700 text-sm">Nicht der "einsame Wolf", sondern der "Enabler". Kann Junior-Pentestern Struktur geben und Ergebnisse an das C-Level berichten.</div>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center text-xs text-stone-400 mt-8 italic">Tipp: Tippen Sie auf die weißen Karten, um die Details auf Mobilgeräten zu sehen.</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Deep Dive Tech (Open Source) -->
+    <section id="tech" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-stone-900">Open Source Portfolio: Honey-Scan</h2>
+                <p class="text-stone-600 max-w-3xl mt-2">
+                    Kein "Script-Kiddie" Code, sondern Architektur. Analyse der Projekte <code>honey-scan</code> und <code>honey-api</code>. 
+                    Diese Projekte beweisen Verständnis für API-Design, Containerisierung und modulare Security-Architektur.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Project Details Card -->
+                <div class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold font-mono text-teal-700">honey-scan <span class="text-xs bg-teal-100 px-2 py-1 rounded text-teal-800">BETA</span></h3>
+                        <div class="flex space-x-2">
+                            <button onclick="updateProjectView('arch')" id="btn-arch" class="text-xs px-3 py-1 rounded-full bg-stone-200 hover:bg-stone-300 active-tab">Architektur</button>
+                            <button onclick="updateProjectView('stack')" id="btn-stack" class="text-xs px-3 py-1 rounded-full bg-stone-200 hover:bg-stone-300">Tech Stack</button>
+                        </div>
+                    </div>
+                    
+                    <div id="project-content" class="min-h-[200px]">
+                        <!-- Dynamic Content Area -->
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span>
+                                <div>
+                                    <span class="font-bold text-stone-800">Modulare Deception:</span>
+                                    <p class="text-sm text-stone-600">Trennung von Sensorik (Honeypot) und Auswertung (API). Ermöglicht verteilte Deployments.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span>
+                                <div>
+                                    <span class="font-bold text-stone-800">Asynchrone Verarbeitung:</span>
+                                    <p class="text-sm text-stone-600">Nutzung von Queues zur Verarbeitung von Attack-Daten ohne Performance-Impact auf die Sensoren.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span>
+                                <div>
+                                    <span class="font-bold text-stone-800">Clean Code Principles:</span>
+                                    <p class="text-sm text-stone-600">Strukturierte Repositories (Assets, Docs, Code), Nutzung von Lintern und Typsicherheit.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-stone-200 flex justify-between items-center text-xs text-stone-500 font-mono">
+                        <span>Repo: github.com/derlemue</span>
+                        <span>Status: Active Development</span>
+                    </div>
+                </div>
+
+                <!-- Code Stats Chart -->
+                <div class="bg-white rounded-xl p-6 border border-stone-200 shadow-sm flex flex-col items-center">
+                    <h4 class="text-sm font-semibold text-stone-500 mb-4 w-full text-left">Code Composition & Focus</h4>
+                    <div class="chart-container">
+                        <canvas id="projectChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Infrastructure (The Lab) -->
+    <section id="lab" class="py-16 bg-stone-900 text-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-white">Das "Invisible Lab"</h2>
+                <p class="text-stone-400 max-w-2xl mx-auto mt-2">
+                    Wer 2024 noch eigene Mailserver und Firewalls hostet, beweist tiefes Verständnis für DNS, Routing und Hardening. Bewegen Sie die Maus über die Komponenten.
+                </p>
+            </div>
+
+            <!-- Interactive Grid Layout for Homelab -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                
+                <!-- Node 1 -->
+                <div class="lab-node col-span-2 md:col-span-2 bg-stone-800 p-6 rounded-lg border border-stone-700 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition">
+                        <span class="text-4xl">🖧</span>
+                    </div>
+                    <h3 class="text-teal-400 font-mono font-bold text-xl mb-2">Proxmox Cluster</h3>
+                    <p class="text-sm text-stone-300">Der Kern der Infrastruktur. Virtualisierung von Attack- und Defense-Umgebungen.</p>
+                    <div class="mt-4 pt-4 border-t border-stone-700 hidden group-hover:block animate-fade-in">
+                        <span class="text-xs text-teal-300 font-bold">KOMPETENZ:</span>
+                        <p class="text-xs text-stone-400">Ressourcen-Management, High-Availability, Snapshots, LXC Containerisierung.</p>
+                    </div>
+                </div>
+
+                <!-- Node 2 -->
+                <div class="lab-node bg-stone-800 p-6 rounded-lg border border-stone-700 group">
+                    <h3 class="text-amber-500 font-mono font-bold text-lg mb-2">OPNsense</h3>
+                    <p class="text-xs text-stone-400">Firewall & Routing Edge.</p>
+                     <div class="mt-2 hidden group-hover:block">
+                        <p class="text-xs text-stone-300">VLAN Tagging, VPN, Intrusion Detection.</p>
+                    </div>
+                </div>
+
+                <!-- Node 3 -->
+                <div class="lab-node bg-stone-800 p-6 rounded-lg border border-stone-700 group">
+                    <h3 class="text-blue-400 font-mono font-bold text-lg mb-2">Self-Hosted</h3>
+                    <p class="text-xs text-stone-400">Mail, Git, Cloud.</p>
+                    <div class="mt-2 hidden group-hover:block">
+                        <p class="text-xs text-stone-300">DNS Records, Spam-Filter, Data Sovereignty.</p>
+                    </div>
+                </div>
+
+                <!-- Node 4 -->
+                <div class="lab-node md:col-span-4 bg-stone-800 p-4 rounded-lg border border-stone-700 flex items-center justify-between group">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-2xl">🛡️</span>
+                        <div>
+                            <h3 class="font-bold text-white">Security Hardening Layer</h3>
+                            <p class="text-xs text-stone-400">Fail2Ban, CrowdSec, Network Segmentation</p>
+                        </div>
+                    </div>
+                    <div class="text-right hidden sm:block">
+                        <span class="text-xs border border-teal-500 text-teal-400 px-2 py-1 rounded">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Vision & CTA -->
+    <section id="vision" class="py-16 bg-white border-t border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-stone-900 mb-8">Führungsvision: Der Strategische Ausblick</h2>
+            
+            <div class="bg-stone-50 rounded-2xl p-8 border border-stone-200 shadow-lg relative overflow-hidden">
+                <div class="absolute top-4 right-4 flex bg-stone-200 rounded-lg p-1">
+                    <button onclick="setVision('hacker')" id="btn-hacker" class="px-4 py-1 rounded-md text-sm font-medium transition-all bg-white text-stone-900 shadow-sm">Tech Focus</button>
+                    <button onclick="setVision('leader')" id="btn-leader" class="px-4 py-1 rounded-md text-sm font-medium transition-all text-stone-500 hover:text-stone-700">Business Focus</button>
+                </div>
+
+                <div id="vision-content" class="mt-8 text-left">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-4" id="vision-title">Der Hacker-Ansatz</h3>
+                    <p class="text-stone-600 leading-relaxed text-lg" id="vision-text">
+                        "Man muss das System brechen, um es zu verstehen. Mein Ansatz ist es, Schwachstellen durch offensive Tests (Pentesting) schonungslos aufzudecken, bevor es ein Angreifer tut. Technische Exzellenz und Tooling sind der Schlüssel."
+                    </p>
+                    <div class="mt-6 p-4 bg-teal-50 border-l-4 border-teal-500 rounded-r-lg">
+                        <span class="block font-bold text-teal-800 text-sm uppercase tracking-wide mb-1" id="vision-label">Kernkompetenz</span>
+                        <span class="text-teal-900" id="vision-sub">Exploitation, Scripting, Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <p class="text-stone-500 mb-6">Interesse an einer Diskussion über moderne Cyber-Resilienz?</p>
+                <a href="mailto:thomas.ledermueller@icloud.com" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:text-lg transition shadow-lg hover:shadow-xl">
+                    Kontakt aufnehmen
+                </a>
+                <div class="mt-4 flex justify-center space-x-6 text-sm text-stone-400">
+                    <a href="#" class="hover:text-stone-600">github.com/derlemue</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-stone-600">admin@lemue.org</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-50 border-t border-stone-200 py-8 text-center text-xs text-stone-400">
+        <p>&copy; 2024 Thomas Ledermüller Profile Dossier. Generated for Executive Review.</p>
+    </footer>
+
+    <script>
+        // State Management
+        const state = {
+            currentVision: 'hacker',
+            currentProjectView: 'arch'
+        };
+
+        // Data Store
+        const projectData = {
+            arch: `
+                <ul class="space-y-4">
+                    <li class="flex items-start"><span class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span><div><span class="font-bold text-stone-800">Modulare Deception:</span><p class="text-sm text-stone-600">Trennung von Sensorik (Honeypot) und Auswertung (API).</p></div></li>
+                    <li class="flex items-start"><span class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span><div><span class="font-bold text-stone-800">Asynchrone Verarbeitung:</span><p class="text-sm text-stone-600">Nutzung von Queues zur Lastverteilung.</p></div></li>
+                    <li class="flex items-start"><span class="h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span><div><span class="font-bold text-stone-800">Clean Code:</span><p class="text-sm text-stone-600">Linting, Typing, Docs.</p></div></li>
+                </ul>`,
+            stack: `
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-3 bg-stone-100 rounded border border-stone-200"><span class="font-bold block text-teal-700">Language</span>Python, Go</div>
+                    <div class="p-3 bg-stone-100 rounded border border-stone-200"><span class="font-bold block text-teal-700">Container</span>Docker, Compose</div>
+                    <div class="p-3 bg-stone-100 rounded border border-stone-200"><span class="font-bold block text-teal-700">API</span>REST, JSON</div>
+                    <div class="p-3 bg-stone-100 rounded border border-stone-200"><span class="font-bold block text-teal-700">OS</span>Linux (Debian/Alpine)</div>
+                </div>`
+        };
+
+        const visionData = {
+            hacker: {
+                title: "Der Hacker-Ansatz",
+                text: "\"Man muss das System brechen, um es zu verstehen. Mein Ansatz ist es, Schwachstellen durch offensive Tests (Pentesting) schonungslos aufzudecken. Technische Exzellenz ist der Schlüssel.\"",
+                label: "Kernkompetenz",
+                sub: "Exploitation, Scripting, Automation"
+            },
+            leader: {
+                title: "Der Leadership-Ansatz",
+                text: "\"Hacking ist kein Selbstzweck. Als Team Lead geht es darum, technische Risiken in Business-Sprache zu übersetzen, Prozesse zu härten und das SOC-Team zu befähigen. Sicherheit muss die Produktion ermöglichen, nicht behindern.\"",
+                label: "Mehrwert",
+                sub: "Risikomanagement, Mentoring, Business Alignment"
+            }
+        };
+
+        // Navigation Function
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Timeline Interaction
+        function toggleTranslation(cardId) {
+            const target = document.getElementById(cardId + '-target');
+            // Toggle visibility logic for mobile mainly, on desktop it's visible or hover based
+            if (window.innerWidth < 768) {
+                target.classList.toggle('hidden');
+                target.classList.toggle('block');
+            }
+        }
+
+        // Project Tab Switcher
+        function updateProjectView(view) {
+            state.currentProjectView = view;
+            const contentDiv = document.getElementById('project-content');
+            const btnArch = document.getElementById('btn-arch');
+            const btnStack = document.getElementById('btn-stack');
+
+            // Update Content
+            contentDiv.innerHTML = projectData[view];
+
+            // Update Buttons
+            if (view === 'arch') {
+                btnArch.classList.add('bg-stone-200', 'active-tab');
+                btnArch.classList.remove('bg-white');
+                btnStack.classList.remove('bg-stone-200', 'active-tab');
+            } else {
+                btnStack.classList.add('bg-stone-200', 'active-tab');
+                btnStack.classList.remove('bg-white');
+                btnArch.classList.remove('bg-stone-200', 'active-tab');
+            }
+        }
+
+        // Vision Switcher
+        function setVision(type) {
+            const data = visionData[type];
+            document.getElementById('vision-title').innerText = data.title;
+            document.getElementById('vision-text').innerText = data.text;
+            document.getElementById('vision-label').innerText = data.label;
+            document.getElementById('vision-sub').innerText = data.sub;
+
+            const btnHacker = document.getElementById('btn-hacker');
+            const btnLeader = document.getElementById('btn-leader');
+
+            if (type === 'hacker') {
+                btnHacker.classList.add('bg-white', 'text-stone-900', 'shadow-sm');
+                btnHacker.classList.remove('text-stone-500');
+                btnLeader.classList.remove('bg-white', 'text-stone-900', 'shadow-sm');
+                btnLeader.classList.add('text-stone-500');
+            } else {
+                btnLeader.classList.add('bg-white', 'text-stone-900', 'shadow-sm');
+                btnLeader.classList.remove('text-stone-500');
+                btnHacker.classList.remove('bg-white', 'text-stone-900', 'shadow-sm');
+                btnHacker.classList.add('text-stone-500');
+            }
+        }
+
+        // Chart Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Skill Radar Chart
+            const ctxRadar = document.getElementById('skillRadar').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Red Teaming', 'Engineering', 'Leadership', 'Compliance', 'DevOps', 'Networking'],
+                    datasets: [{
+                        label: 'Skill Distribution',
+                        data: [85, 95, 80, 75, 70, 90],
+                        fill: true,
+                        backgroundColor: 'rgba(13, 148, 136, 0.2)', // Teal-600 transparent
+                        borderColor: '#0d9488', // Teal-600
+                        pointBackgroundColor: '#0f766e',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#0f766e'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#e5e7eb' },
+                            grid: { color: '#e5e7eb' },
+                            pointLabels: {
+                                font: { size: 11, family: 'Inter' },
+                                color: '#4b5563'
+                            },
+                            ticks: { display: false, maxTicksLimit: 5 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // Project Stats Bar Chart
+            const ctxBar = document.getElementById('projectChart').getContext('2d');
+            new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Core Logic', 'API Wrappers', 'Docs', 'Tests', 'Config'],
+                    datasets: [{
+                        label: 'Codebase Composition (%)',
+                        data: [45, 20, 15, 10, 10],
+                        backgroundColor: [
+                            '#0d9488', // Teal
+                            '#5eead4', // Teal light
+                            '#d6d3d1', // Stone
+                            '#f59e0b', // Amber (Tests are gold)
+                            '#78716c'  // Stone dark
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { display: false },
+                            ticks: { display: false }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 10 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw + '% Focus';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

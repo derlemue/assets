@@ -13,6 +13,18 @@
 > **The Cinematic Expansion Release**
 > Onboarding a professional video portal for all media and character vignettes.
 
+---
+
+## 📚 [1.3.5] — 2026-01-13
+> **The Knowledge Integration Release**
+> Formalizing the learning resources into the ecosystem with dedicated, hosted modules.
+
+### 🧠 Learning Laboratory
+- **Structure**: Established `docs/learning/` as the home for interactive educational content.
+- **Maps**: Integrated `maps.html` for architectural flashcards (Placeholder).
+- **Quiz**: Integrated `quiz.html` for cyber defense knowledge checks (Placeholder).
+- **Privacy**: Migrated from external Gemini links to internal, self-hosted HTML resources.
+
 ### 📹 Media & Immersive Experience
 - **Video Vault**: Launched [video-vault.html](video-vault.html) — an immersive, cinema-themed portal for Character and Infrastructure loops.
 - **Interactive Playback**: Integrated high-fidelity MP4 players with loop support directly into the web interface.
