@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3] - 2026-01-13
+
+### Added
+- 📄 **Documentation**: Linked the Analysis 3 Markdown source in the README.
+
 ## [1.2.2] - 2026-01-13
 
 ### Added
