@@ -55,17 +55,23 @@ We maintain detailed analysis and security reports within this repository.
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-2.html)
   - [PDF Version](docs/reports/honey-scan-deepresearch-report-2.pdf)
   - [Markdown Source](docs/reports/honey-scan-deepresearch-report-2.md)
+  - [Audio Summary](docs/reports/honey-scan-deepresearch-report-2.mp3)
 
 - **Honey Scan Deep Research Report (Analysis 3)**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-3.html)
+
+- **Honey Scan Deep Research Report (Analysis 4)**:
+  - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-4.html)
 
 - **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
 - **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)
 
 ### 🗺️ Roadmaps & Architecture
 
-- **Honey Scan Refactoring & Architecture Roadmap**: [`docs/reports/honey-scan-refactoring-architecture-roadmap.pdf`](docs/reports/honey-scan-refactoring-architecture-roadmap.pdf)
-- **Honey Scan Refactoring & Architektur-Roadmap (DE)**: [`docs/reports/honey-scan-refactoring-architektur-roadmap-de.pdf`](docs/reports/honey-scan-refactoring-architektur-roadmap-de.pdf)
+- **Honey Scan Refactoring & Architecture Roadmap**:
+  - [Version 1 (Original)](docs/reports/honey-scan-refactoring-roadmap-1.pdf) | [German](docs/reports/honey-scan-refactoring-roadmap-1-de.pdf)
+  - [Version 2 (Updated)](docs/reports/honey-scan-refactoring-roadmap-2.pdf) | [German](docs/reports/honey-scan-refactoring-roadmap-2-de.pdf)
+
 
 ---
 
