@@ -5,7 +5,7 @@
 > A centralized hub for all static assets, media snippets, design resources, and reports associated with the `lemueIO` ecosystem.
 > Ensure consistency. Embrace creativity.
 
-![Version](https://img.shields.io/badge/version-1.2.1-blue.svg?style=for-the-badge&logo=git)
+![Version](https://img.shields.io/badge/version-1.2.2-blue.svg?style=for-the-badge&logo=git)
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge&logo=open-source-initiative)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)
 ![Repo Size](https://img.shields.io/github/repo-size/derlemue/assets?style=for-the-badge&color=orange)
@@ -59,6 +59,7 @@ We maintain detailed analysis and security reports within this repository.
 
 - **Honey Scan Deep Research Report (Analysis 3)**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-3.html)
+  - [Audio Summary](docs/reports/honey-scan-deepresearch-report-3.mp3)
 
 - **Honey Scan Deep Research Report (Analysis 4)**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-4.html)
