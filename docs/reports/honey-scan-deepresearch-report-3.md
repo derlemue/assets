@@ -1,3 +1,4 @@
+```markdown
 # Honey Scan: Technischer Analysebericht & Architektur-Roadmap
 
 **Status:** Draft / Deep Research  
@@ -24,9 +25,9 @@ Das folgende Diagramm zeigt die Diskrepanz zwischen dem Original und dem aktuell
 ```mermaid
 graph TD
     subgraph "Legacy HFish (Original)"
-        A[Original Core (Go)] -->|Enthält| B(CN Hardcoded Strings)
-        A -->|Nutzt| C(CN DB Schema 'yonghu', 'mima')
-        A -->|Logik| D(CN Cloud Connectors)
+        A["Original Core (Go)"] -->|Enthält| B("CN Hardcoded Strings")
+        A -->|Nutzt| C("CN DB Schema 'yonghu', 'mima'")
+        A -->|Logik| D("CN Cloud Connectors")
     end
 
     subgraph "Honey Scan (Current Fork)"
@@ -46,3 +47,52 @@ graph TD
     style C fill:#ffcccc,stroke:#333
     style E fill:#e6f3ff,stroke:#333
     style G fill:#fff2cc,stroke:#333
+
+```
+
+### 2.2 Verteilung der Komponenten
+
+Diese Übersicht zeigt, wo sich die sprachlichen und logischen Barrieren befinden.
+
+```mermaid
+pie title "Verteilung der 'Localization Debt' im Repository"
+    "Englisches UI (Refactored)" : 30
+    "Englisches Backend (Refactored)" : 10
+    "CN Datenbank-Schema (Legacy)" : 25
+    "CN Kommentare & Docs (Legacy)" : 15
+    "CN Hardcoded Logic (Legacy)" : 20
+
+```
+
+---
+
+## 3. Das Performance-Dilemma: Go vs. PHP
+
+Ein Kernpunkt der Anforderung war die Evaluierung eines Wechsels zu PHP für das Backend.
+
+### 3.1 Architektur-Entscheidung: VETO für PHP im Core
+
+Die folgende Sequenzanalyse verdeutlicht, warum PHP für einen High-Interaction Honeypot ungeeignet ist (Blocking I/O vs. Non-Blocking I/O).
+
+**Szenario:** 10.000 gleichzeitige SYN-Requests (Angriffswelle)
+
+```mermaid
+sequenceDiagram
+    participant Attacker as Angreifer (Botnet)
+    participant Go as Go Routine (Honeypot)
+    participant PHP as PHP Worker (Alternative)
+    participant Sys as System Resources
+
+    Note over Attacker, Go: Vergleich der Lastbewältigung
+
+    rect rgb(200, 255, 200)
+    Note right of Go: Go Architektur (Non-Blocking)
+    Attacker->>Go: Sendet 10k Pakete
+    Go->>Go: Spawn 10k Goroutines (Micro-Threads)
+    Go->>Sys: Verbraucht ~50MB RAM
+    Go-->>Attacker: Akzeptiert Verbindungen (Keep-Alive)
+    end
+
+    rect rgb(255, 200, 20
+
+```
