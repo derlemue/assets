@@ -20,10 +20,9 @@
 > Formalizing the learning resources into the ecosystem with dedicated, hosted modules.
 
 ### 🧠 Learning Laboratory
-- **Structure**: Established `docs/learning/` as the home for interactive educational content.
-- **Maps**: Integrated `maps.html` for architectural flashcards (Placeholder).
-- **Quiz**: Integrated `quiz.html` for cyber defense knowledge checks (Placeholder).
-- **Privacy**: Migrated from external Gemini links to internal, self-hosted HTML resources.
+- **Links**: Updated external resources for Flashcards and Quizzes with latest 2026 content.
+- **Maps**: Linked new Gemini-based architectural flashcards.
+- **Quiz**: Linked new Gemini-based knowledge check.
 
 ### 📹 Media & Immersive Experience
 - **Video Vault**: Launched [video-vault.html](video-vault.html) — an immersive, cinema-themed portal for Character and Infrastructure loops.
