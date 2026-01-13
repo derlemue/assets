@@ -1,6 +1,13 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+ 
+## [1.2.4] - 2026-01-13
+ 
+### Added
+- 🎤 **Audio**: Linked the 4th Audio Summary (Analysis 4) in the README.
+- 🔄 **Sync**: Pulled latest updates for Analysis 3 documentation.
+
 
 ## [1.2.3] - 2026-01-13
 
