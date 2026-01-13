@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2026-01-13
+
+### Added
+- 🎤 **Audio**: Linked the 3rd Audio Summary (Analysis 3) in the README.
+
+### Changed
+- 📄 **Documentation**: Synchronized Honey Scan Deep Research Report (Analysis 5) to ensure latest content is deployed.
+
 ## [1.2.1] - 2026-01-13
 
 ### Changed
