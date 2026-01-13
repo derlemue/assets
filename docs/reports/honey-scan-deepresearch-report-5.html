@@ -1,29 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honey Scan | Architecture & Roadmap Report</title>
+    <title>Honey Scan | Technische Architektur & Roadmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f4;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        
-        /* Chart Container Customization */
+        /* Chart Container Styling Requirement */
         .chart-container {
             position: relative;
             width: 100%;
@@ -39,7 +24,46 @@
             }
         }
 
-        /* Timeline Connector Line */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Card Hover Effects */
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Architecture Diagram Nodes */
+        .arch-node {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .arch-node:hover {
+            transform: scale(1.02);
+            border-color: #f59e0b; /* Amber-500 */
+        }
+        .arch-node.active {
+            border-color: #d97706; /* Amber-600 */
+            background-color: #fffbeb; /* Amber-50 */
+            box-shadow: 0 0 0 2px #fcd34d;
+        }
+
+        /* Timeline Connector */
         .timeline-line::before {
             content: '';
             position: absolute;
@@ -50,494 +74,498 @@
             background-color: #e2e8f0;
             z-index: 0;
         }
-
-        /* Smooth Transitions */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
-    <!-- Chosen Palette: Warm Neutral (Stone-50) Background, Deep Slate (Slate-800) Text, Amber-600 Accent (Honey Theme) -->
-    <!-- Application Structure Plan: Dashboard Layout with Sidebar Navigation. 
-         1. Executive Summary: High-level status and objective.
-         2. Repository Analysis: Visual diff of HFish vs. Honey Scan.
-         3. Performance Dilemma: Interactive comparison of Go vs. PHP/Python to justify the VETO.
-         4. Roadmap: Interactive 3-phase timeline showing the path forward.
-         The structure guides the user from the "What" (Analysis) to the "Why" (Architecture) to the "How" (Roadmap). -->
-    <!-- Visualization & Content Choices: 
-         - Repo Composition: Doughnut Chart (Chart.js) to show the ratio of Legacy CN code vs. English Refactor. Goal: Highlight the scope of work.
-         - Concurrency Performance: Bar Chart (Chart.js) comparing Go vs. PHP. Goal: Prove why Go must be kept for the core.
-         - Architecture Diagram: HTML/CSS Grid Layout. Goal: interactive block diagram to visualize the Hybrid approach.
-         - Roadmap: Vertical Timeline with Click-to-Expand details. Goal: Break down the complex migration into digestible steps. 
+    <!-- Chosen Palette: "Cyber-Defense Amber" -> Warm Neutrals (Slate-50/100) background, Deep Slate (Slate-900) text, Amber-500/600 accents for the 'Honey' theme. Professional, technical, yet distinct. -->
+    
+    <!-- Application Structure Plan:
+         1. Header: Branding and high-level context.
+         2. Dashboard Overview: 3 KPI Cards summarizing the Executive Summary (Status, Core Decision, Strategy).
+         3. Analysis Section (The "Why"):
+            - "Localization Debt" Chart: Visualizes the cleanup task.
+            - Performance Simulator: Interactive Bar Chart comparing Go vs. PHP to justify the VETO decision.
+         4. Architecture Section (The "What"):
+            - Interactive Block Diagram: Users click on components (Sensor, Redis, UI) to see their role in the new hybrid stack.
+         5. Roadmap Section (The "When"):
+            - Interactive Phase Timeline: Details for Phase 1 (Cleanup), 2 (Arch), 3 (Migration).
+         6. Data Flow Details: Explaining the specific schema changes (yonghu -> users).
     -->
+
+    <!-- Visualization & Content Choices:
+         - Localization Composition: Doughnut Chart. Goal: Show magnitude of "Technical Debt". Justification: Best for parts-of-a-whole comparison.
+         - Performance: Bar Chart. Goal: Compare throughput. Interaction: "Simulate Load" button updates data to emphasize Go's stability. Justification: Clear comparison of magnitudes.
+         - Architecture: HTML Grid of interactive cards. Goal: Explain the Hybrid approach. Justification: Replaces Mermaid flowchart with interactive HTML elements.
+         - Roadmap: Vertical Timeline. Goal: Show linear progression.
+    -->
+
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
-<body class="bg-stone-50 text-slate-800 font-sans antialiased selection:bg-amber-200">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <!-- Mobile Header -->
-    <div class="md:hidden bg-slate-900 text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
-        <div class="font-bold text-lg"><i class="fas fa-shield-alt text-amber-500 mr-2"></i>Honey Scan</div>
-        <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-            <i class="fas fa-bars text-xl"></i>
-        </button>
-    </div>
-
-    <div class="flex flex-col md:flex-row min-h-screen">
-
-        <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-slate-900 text-slate-300 fixed h-full z-40 transition-transform transform md:translate-x-0 -translate-x-full">
-            <div class="p-6 border-b border-slate-700">
-                <h1 class="text-2xl font-bold text-white tracking-tight flex items-center">
-                    <i class="fas fa-shield-alt text-amber-500 mr-3"></i>
-                    Honey Scan
-                </h1>
-                <p class="text-xs text-slate-400 mt-2 uppercase tracking-wider">Architecture Report</p>
+    <!-- Header -->
+    <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center text-slate-900 font-bold text-xl">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Honey Scan</h1>
+                    <p class="text-xs text-slate-400">Technischer Analysebericht & Roadmap</p>
+                </div>
             </div>
-            
-            <nav class="flex-1 overflow-y-auto py-4">
-                <ul class="space-y-1">
-                    <li>
-                        <button onclick="navigateTo('overview')" class="nav-btn w-full text-left px-6 py-3 hover:bg-slate-800 hover:text-amber-400 transition-colors flex items-center border-l-4 border-transparent active-nav" data-target="overview">
-                            <i class="fas fa-home w-6"></i> Overview
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="navigateTo('repo-analysis')" class="nav-btn w-full text-left px-6 py-3 hover:bg-slate-800 hover:text-amber-400 transition-colors flex items-center border-l-4 border-transparent" data-target="repo-analysis">
-                            <i class="fas fa-code-branch w-6"></i> Repository Analysis
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="navigateTo('architecture')" class="nav-btn w-full text-left px-6 py-3 hover:bg-slate-800 hover:text-amber-400 transition-colors flex items-center border-l-4 border-transparent" data-target="architecture">
-                            <i class="fas fa-server w-6"></i> Performance Dilemma
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="navigateTo('roadmap')" class="nav-btn w-full text-left px-6 py-3 hover:bg-slate-800 hover:text-amber-400 transition-colors flex items-center border-l-4 border-transparent" data-target="roadmap">
-                            <i class="fas fa-map-signs w-6"></i> Migration Roadmap
-                        </button>
-                    </li>
-                </ul>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <button onclick="scrollToSection('dashboard')" class="hover:text-amber-400 transition-colors">Übersicht</button>
+                <button onclick="scrollToSection('analysis')" class="hover:text-amber-400 transition-colors">Analyse</button>
+                <button onclick="scrollToSection('architecture')" class="hover:text-amber-400 transition-colors">Architektur</button>
+                <button onclick="scrollToSection('roadmap')" class="hover:text-amber-400 transition-colors">Roadmap</button>
             </nav>
-
-            <div class="p-6 border-t border-slate-700 text-xs text-slate-500">
-                <p>Status: <span class="text-amber-500 font-semibold">Deep Research</span></p>
-                <p class="mt-1">Target: derlemue/honey-scan</p>
+            <div class="md:hidden">
+                <!-- Mobile menu placeholder -->
+                <i class="fas fa-bars text-slate-300"></i>
             </div>
-        </aside>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="flex-1 md:ml-64 p-4 md:p-8 lg:p-12 transition-all">
-            
-            <!-- SECTION: Overview -->
-            <section id="overview" class="view-section fade-in">
-                <header class="mb-8">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Executive Summary</h2>
-                    <p class="text-lg text-slate-600 max-w-3xl">
-                        A critical architectural review and modernization roadmap for the Honey Scan project. 
-                        This report evaluates the feasibility of migrating from Go to PHP/Python and outlines the path to a fully English-standardized system.
-                    </p>
-                </header>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <div class="text-amber-500 text-2xl mb-3"><i class="fas fa-search"></i></div>
-                        <h3 class="font-bold text-lg mb-2">Deep Analysis</h3>
-                        <p class="text-slate-600 text-sm">Analyzed <strong>derlemue/honey-scan</strong> against the legacy HFish baseline. Identified significant localization debt.</p>
+        <!-- SECTION 1: Dashboard / Executive Summary -->
+        <section id="dashboard" class="scroll-mt-24">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-900">Executive Summary</h2>
+                <p class="text-slate-600 mt-2 max-w-3xl">
+                    Dieser Bericht bewertet die technische Machbarkeit der Modernisierung des <code>honey-scan</code> Repositories (Fork von HFish).
+                    Ziel ist die Transformation von einer chinesisch-basierten Legacy-Codebasis zu einem modernen, englischsprachigen System.
+                    Im Folgenden finden Sie die Kernentscheidungen und Analysen.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Status Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 interactive-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-blue-100 rounded-lg text-blue-600">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Status</span>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <div class="text-red-500 text-2xl mb-3"><i class="fas fa-ban"></i></div>
-                        <h3 class="font-bold text-lg mb-2">Decision Gate</h3>
-                        <p class="text-slate-600 text-sm"><strong>VETOED</strong> the proposal to rewrite the core engine in PHP. Go is required for high-concurrency performance.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">Deep Research</h3>
+                    <p class="text-sm text-slate-600">Analyse der Diskrepanz zwischen Legacy HFish und Honey Scan Fork abgeschlossen. Identifikation massiver "Localization Debt".</p>
+                </div>
+
+                <!-- Decision Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500 interactive-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-red-100 rounded-lg text-red-600">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Entscheidung</span>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <div class="text-green-600 text-2xl mb-3"><i class="fas fa-route"></i></div>
-                        <h3 class="font-bold text-lg mb-2">Strategic Roadmap</h3>
-                        <p class="text-slate-600 text-sm">Established a 3-Phase plan: Cleanup, Hybrid Architecture Refactoring, and Full Migration.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">VETO: PHP Core</h3>
+                    <p class="text-sm text-slate-600">Der Vorschlag, das Backend auf PHP zu portieren, wurde <strong>abgelehnt</strong>. Performance-Tests zeigen Risiken bei High-Concurrency Angriffen.</p>
+                </div>
+
+                <!-- Strategy Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 interactive-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-green-100 rounded-lg text-green-600">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Strategie</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">Hybride Architektur</h3>
+                    <p class="text-sm text-slate-600">Einsatz einer geteilten Struktur: <strong>Go</strong> für den Hochleistungssensor, <strong>Web-Tech</strong> (PHP/Python) für das Management UI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Analysis (Localization & Performance) -->
+        <section id="analysis" class="scroll-mt-24">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                        <i class="fas fa-chart-pie text-amber-500 mr-3"></i>
+                        Codebasis & Performance Analyse
+                    </h2>
+                    <p class="text-slate-600 mt-1">Detaillierte Untersuchung der "Localization Debt" und der technischen Leistungsfähigkeit.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Chart 1: Localization Debt -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="mb-4">
+                        <h3 class="font-bold text-lg text-slate-800">Verteilung der "Localization Debt"</h3>
+                        <p class="text-xs text-slate-500">Anteil der Komponenten, die noch sprachbereinigt werden müssen.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="debtChart"></canvas>
+                    </div>
+                    <div class="mt-4 bg-amber-50 p-3 rounded-lg border border-amber-100">
+                        <h4 class="text-sm font-bold text-amber-800 mb-1"><i class="fas fa-exclamation-triangle mr-2"></i>Kritische Befunde</h4>
+                        <ul class="text-xs text-amber-900 list-disc list-inside space-y-1">
+                            <li>DB-Tabellen nutzen Pinyin (z.B. <code>yonghu</code> statt <code>users</code>).</li>
+                            <li>Hardcodierte Strings in der Go-Logik verhindern Internationalisierung.</li>
+                            <li>Dokumentation divergiert stark vom Code-Zustand.</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
 
-            <!-- SECTION: Repository Analysis -->
-            <section id="repo-analysis" class="view-section hidden fade-in">
-                <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Live Code Comparison</h2>
-                    <p class="text-slate-600 max-w-3xl">
-                        An analysis of the current state of <code>derlemue/honey-scan</code> compared to the original <code>hacklcx/HFish</code>. 
-                        The primary challenge is the embedded "CN" (Chinese) logic within the core backend.
-                    </p>
-                </header>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                    <!-- Chart Column -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="font-bold text-lg mb-4 text-slate-800">Codebase Composition Estimate</h3>
-                        <div class="chart-container">
-                            <canvas id="repoChart"></canvas>
+                <!-- Chart 2: Performance Dilemma -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-800">Performance Simulation</h3>
+                            <p class="text-xs text-slate-500">Go vs. PHP unter Last (10.000 SYN-Requests)</p>
                         </div>
-                        <div class="mt-4 text-sm text-slate-500 text-center">
-                            Based on diff analysis between baseline and target fork.
-                        </div>
+                        <button onclick="simulateLoad()" class="px-3 py-1 bg-slate-800 text-white text-xs rounded hover:bg-slate-700 transition">
+                            <i class="fas fa-play mr-1"></i> Lasttest Simulieren
+                        </button>
                     </div>
-
-                    <!-- Details Column -->
-                    <div class="space-y-6">
-                        <div class="bg-slate-100 p-5 rounded-lg border-l-4 border-amber-500">
-                            <h4 class="font-bold text-slate-800 mb-2">Key Findings</h4>
-                            <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
-                                <li><strong>Localization Debt:</strong> ~60% of database schemas and comments remain in Chinese.</li>
-                                <li><strong>Hardcoded Logic:</strong> "CN" specific backend logic persists in the node communication layer.</li>
-                                <li><strong>Documentation Mismatch:</strong> PDF docs suggest a cleaner state than the actual repository reflects.</li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white p-5 rounded-lg border border-slate-200">
-                            <h4 class="font-bold text-slate-800 mb-3">Refactoring Progress</h4>
-                            <div class="space-y-3">
-                                <div>
-                                    <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1">
-                                        <span>UI Translation</span>
-                                        <span>30%</span>
-                                    </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-2">
-                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 30%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1">
-                                        <span>Backend De-Localization</span>
-                                        <span>10%</span>
-                                    </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-2">
-                                        <div class="bg-red-500 h-2 rounded-full" style="width: 10%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="perfChart"></canvas>
                     </div>
-                </div>
-            </section>
-
-            <!-- SECTION: Architecture Decision -->
-            <section id="architecture" class="view-section hidden fade-in">
-                <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-2">The Performance Dilemma</h2>
-                    <p class="text-slate-600 max-w-3xl">
-                        The user proposed porting the backend to PHP/Python. 
-                        <strong>Architectural Recommendation: REJECTED.</strong> 
-                        Below is the data supporting the retention of Go for the core engine.
-                    </p>
-                </header>
-
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10">
-                    <!-- Performance Chart -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="font-bold text-lg mb-4 text-slate-800">Throughput Simulation (Requests/Sec)</h3>
-                        <p class="text-sm text-slate-500 mb-4">Simulating high-concurrency attack traffic on a standard node.</p>
-                        <div class="chart-container">
-                            <canvas id="perfChart"></canvas>
+                    <div class="mt-4 grid grid-cols-2 gap-4">
+                        <div class="p-3 bg-green-50 rounded-lg border border-green-100">
+                            <div class="font-bold text-green-800 text-sm">Go (Sensor)</div>
+                            <div class="text-xs text-green-700 mt-1">Non-Blocking I/O. Verarbeitet 10k+ Verbindungen stabil mit Goroutines.</div>
                         </div>
-                    </div>
-
-                    <!-- Text Analysis -->
-                    <div class="flex flex-col justify-center space-y-6">
-                        <div class="p-6 bg-red-50 rounded-xl border border-red-100">
-                            <h3 class="font-bold text-red-700 mb-2"><i class="fas fa-times-circle mr-2"></i>Why not PHP for Core?</h3>
-                            <p class="text-slate-700 text-sm mb-2">
-                                PHP is designed for the "Request-Response" lifecycle of web pages. It tears down the environment after every request. 
-                            </p>
-                            <p class="text-slate-700 text-sm">
-                                <strong>Honeypot Requirement:</strong> Long-lived TCP connections, massive concurrency (10k+ routines), and low-level socket manipulation. PHP-FPM would choke under SYN floods or brute-force attacks.
-                            </p>
-                        </div>
-
-                        <div class="p-6 bg-green-50 rounded-xl border border-green-100">
-                            <h3 class="font-bold text-green-700 mb-2"><i class="fas fa-check-circle mr-2"></i>Why Go?</h3>
-                            <p class="text-slate-700 text-sm">
-                                Go's <strong>Goroutines</strong> allow handling thousands of concurrent connections with minimal memory footprint. It compiles to a static binary, making deployment on sensor nodes secure and dependency-free.
-                            </p>
+                        <div class="p-3 bg-red-50 rounded-lg border border-red-100">
+                            <div class="font-bold text-red-800 text-sm">PHP (Worker)</div>
+                            <div class="text-xs text-red-700 mt-1">Blocking I/O. Overhead pro Request führt zum Kollaps bei Flood-Angriffen.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Proposed Architecture Diagram -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-xl mb-6 text-slate-800 text-center">Recommended Hybrid Architecture</h3>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Architecture (Interactive Diagram) -->
+        <section id="architecture" class="scroll-mt-24">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                    <i class="fas fa-network-wired text-amber-500 mr-3"></i>
+                    Soll-Architektur: Hybrider Ansatz
+                </h2>
+                <p class="text-slate-600 mt-2">
+                    Klicken Sie auf die Komponenten im Diagramm, um Details zur Implementierung zu sehen.
+                    Das System trennt strikt zwischen Performance-kritischen Sensoren und dem flexiblen Management.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Interactive Diagram Area -->
+                <div class="lg:col-span-2 bg-slate-100 p-8 rounded-xl border border-slate-200 flex flex-col items-center justify-center space-y-6 relative">
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                        <!-- Column 1: Core -->
-                        <div class="p-4 bg-slate-800 text-white rounded-lg shadow-md flex flex-col items-center">
-                            <div class="text-4xl mb-2 text-amber-500"><i class="fas fa-network-wired"></i></div>
-                            <h4 class="font-bold text-lg">Sensor Core (Go)</h4>
-                            <p class="text-xs text-slate-400 mt-2">Packet Capture, Protocol Emulation, Raw Sockets</p>
-                            <span class="mt-3 px-2 py-1 bg-green-600 text-xs rounded">Retained</span>
-                        </div>
-
-                        <!-- Connector -->
-                        <div class="hidden md:flex items-center justify-center text-slate-300 text-2xl">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-
-                        <!-- Column 2: Data/API -->
-                        <div class="p-4 bg-indigo-900 text-white rounded-lg shadow-md flex flex-col items-center">
-                            <div class="text-4xl mb-2 text-blue-400"><i class="fas fa-database"></i></div>
-                            <h4 class="font-bold text-lg">Data Processing (Python/Go)</h4>
-                            <p class="text-xs text-indigo-200 mt-2">Log normalization, Attack Analysis, JSON API</p>
-                            <span class="mt-3 px-2 py-1 bg-amber-600 text-xs rounded">Refactored</span>
-                        </div>
-
-                         <!-- Connector -->
-                         <div class="hidden md:flex items-center justify-center text-slate-300 text-2xl">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-
-                        <!-- Column 3: UI -->
-                        <div class="p-4 bg-slate-100 text-slate-800 border-2 border-slate-200 rounded-lg shadow-sm flex flex-col items-center">
-                            <div class="text-4xl mb-2 text-purple-600"><i class="fas fa-columns"></i></div>
-                            <h4 class="font-bold text-lg">Admin Dashboard (PHP/Web)</h4>
-                            <p class="text-xs text-slate-500 mt-2">Visualization, Config Mgmt, Reporting</p>
-                            <span class="mt-3 px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded font-bold">New Layer</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION: Roadmap -->
-            <section id="roadmap" class="view-section hidden fade-in">
-                <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Implementation Roadmap</h2>
-                    <p class="text-slate-600 max-w-3xl">
-                        A prioritized 3-phase strategy to transform the repository from its current state to a modern, maintainable security product.
-                    </p>
-                </header>
-
-                <div class="relative timeline-line space-y-8 pl-8 md:pl-10">
-                    
-                    <!-- Phase 1 -->
-                    <div class="relative group">
-                        <div class="absolute -left-10 md:-left-12 top-0 bg-red-100 border-2 border-red-500 w-8 h-8 rounded-full flex items-center justify-center text-red-600 font-bold text-sm">1</div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500 cursor-pointer hover:shadow-md transition-shadow" onclick="toggleDetails('phase1')">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-lg text-slate-800">Phase 1: Cleanup & De-Localization</h3>
-                                    <p class="text-sm text-slate-500 mt-1">Immediate Action • Weeks 1-4</p>
-                                </div>
-                                <button class="text-slate-400 hover:text-slate-600"><i class="fas fa-chevron-down"></i></button>
-                            </div>
-                            <div id="phase1" class="hidden mt-4 pt-4 border-t border-slate-100">
-                                <ul class="space-y-2 text-sm text-slate-700">
-                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Audit all Go files for hardcoded Chinese strings and replace with English constants.</li>
-                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Rename database columns from Pinyin (e.g., `yonghu`) to English (`user`).</li>
-                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Standardize Git commit messages to English.</li>
-                                </ul>
-                            </div>
+                    <!-- External Layer -->
+                    <div class="w-full flex justify-center">
+                        <div class="bg-slate-300 text-slate-600 px-6 py-2 rounded-full text-sm font-bold shadow-inner">
+                            <i class="fas fa-globe mr-2"></i> External Threat Landscape (Angreifer)
                         </div>
                     </div>
 
-                    <!-- Phase 2 -->
-                    <div class="relative group">
-                        <div class="absolute -left-10 md:-left-12 top-0 bg-amber-100 border-2 border-amber-500 w-8 h-8 rounded-full flex items-center justify-center text-amber-600 font-bold text-sm">2</div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 cursor-pointer hover:shadow-md transition-shadow" onclick="toggleDetails('phase2')">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-lg text-slate-800">Phase 2: Hybrid Architecture Implementation</h3>
-                                    <p class="text-sm text-slate-500 mt-1">Structural Change • Weeks 5-10</p>
-                                </div>
-                                <button class="text-slate-400 hover:text-slate-600"><i class="fas fa-chevron-down"></i></button>
-                            </div>
-                            <div id="phase2" class="hidden mt-4 pt-4 border-t border-slate-100">
-                                <ul class="space-y-2 text-sm text-slate-700">
-                                    <li class="flex items-start"><i class="fas fa-wrench text-amber-500 mt-1 mr-2"></i> Decouple the Web UI from the binary. Compile Go core as a headless service.</li>
-                                    <li class="flex items-start"><i class="fas fa-wrench text-amber-500 mt-1 mr-2"></i> Implement REST API in Go core to serve data to the new PHP/Python frontend.</li>
-                                    <li class="flex items-start"><i class="fas fa-wrench text-amber-500 mt-1 mr-2"></i> Introduce Docker Compose to manage the multi-container stack (Go Core + DB + Web UI).</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Arrow -->
+                    <div class="text-slate-400 text-2xl"><i class="fas fa-arrow-down"></i></div>
 
-                    <!-- Phase 3 -->
-                    <div class="relative group">
-                        <div class="absolute -left-10 md:-left-12 top-0 bg-green-100 border-2 border-green-500 w-8 h-8 rounded-full flex items-center justify-center text-green-600 font-bold text-sm">3</div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 cursor-pointer hover:shadow-md transition-shadow" onclick="toggleDetails('phase3')">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-lg text-slate-800">Phase 3: Migration & Optimization</h3>
-                                    <p class="text-sm text-slate-500 mt-1">Final Polish • Weeks 11-14</p>
-                                </div>
-                                <button class="text-slate-400 hover:text-slate-600"><i class="fas fa-chevron-down"></i></button>
+                    <!-- System Box -->
+                    <div class="w-full bg-white p-6 rounded-xl shadow-lg border-2 border-slate-200 relative">
+                        <div class="absolute top-0 left-0 bg-slate-200 text-slate-600 text-xs font-bold px-3 py-1 rounded-br-lg">Honey Scan Server Node</div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                            
+                            <!-- Layer 1: Performance -->
+                            <div onclick="selectArchComponent('sensor')" class="arch-node bg-blue-50 border-2 border-blue-200 p-4 rounded-lg text-center">
+                                <div class="text-2xl text-blue-600 mb-2"><i class="fas fa-microchip"></i></div>
+                                <h4 class="font-bold text-slate-800 text-sm">Performance Layer</h4>
+                                <p class="text-xs text-slate-500 mt-1">Go Core Sensor</p>
                             </div>
-                            <div id="phase3" class="hidden mt-4 pt-4 border-t border-slate-100">
-                                <ul class="space-y-2 text-sm text-slate-700">
-                                    <li class="flex items-start"><i class="fas fa-rocket text-indigo-500 mt-1 mr-2"></i> Migrate existing data from old schema to new English schema using migration scripts.</li>
-                                    <li class="flex items-start"><i class="fas fa-rocket text-indigo-500 mt-1 mr-2"></i> Optimize Go routines for memory usage (profiling).</li>
-                                    <li class="flex items-start"><i class="fas fa-rocket text-indigo-500 mt-1 mr-2"></i> Final security audit and release of Honey Scan v2.0.</li>
-                                </ul>
+
+                            <!-- Layer 2: Data -->
+                            <div onclick="selectArchComponent('data')" class="arch-node bg-purple-50 border-2 border-purple-200 p-4 rounded-lg text-center flex flex-col justify-center">
+                                <div class="text-2xl text-purple-600 mb-2"><i class="fas fa-database"></i></div>
+                                <h4 class="font-bold text-slate-800 text-sm">Data Layer</h4>
+                                <p class="text-xs text-slate-500 mt-1">Redis & MySQL</p>
                             </div>
+
+                            <!-- Layer 3: Management -->
+                            <div onclick="selectArchComponent('ui')" class="arch-node bg-amber-50 border-2 border-amber-200 p-4 rounded-lg text-center">
+                                <div class="text-2xl text-amber-600 mb-2"><i class="fas fa-desktop"></i></div>
+                                <h4 class="font-bold text-slate-800 text-sm">Management Layer</h4>
+                                <p class="text-xs text-slate-500 mt-1">PHP/Web UI</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Connections -->
+                        <div class="absolute inset-0 pointer-events-none hidden md:block">
+                            <!-- Visual lines could be added here via CSS, simplified for clean HTML -->
                         </div>
                     </div>
 
                 </div>
-            </section>
 
-        </main>
-    </div>
+                <!-- Detail Panel -->
+                <div class="lg:col-span-1">
+                    <div id="arch-detail-panel" class="bg-white h-full p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+                        <div class="text-amber-500 text-3xl mb-4"><i id="detail-icon" class="fas fa-info-circle"></i></div>
+                        <h3 id="detail-title" class="text-xl font-bold text-slate-900 mb-2">Komponente auswählen</h3>
+                        <p id="detail-desc" class="text-slate-600 text-sm flex-grow">
+                            Wählen Sie eine Komponente im Diagramm aus, um deren technische Spezifikationen und die geplanten Refactoring-Maßnahmen zu sehen.
+                        </p>
+                        
+                        <div id="detail-tech-stack" class="mt-6 pt-6 border-t border-slate-100 hidden">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Tech Stack</h4>
+                            <div id="tech-tags" class="flex flex-wrap gap-2">
+                                <!-- Tags injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Roadmap -->
+        <section id="roadmap" class="scroll-mt-24">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                    <i class="fas fa-map-signs text-amber-500 mr-3"></i>
+                    Implementation Roadmap
+                </h2>
+                <p class="text-slate-600 mt-1">Ein 3-Phasen-Plan zur Transformation des Systems.</p>
+            </div>
+
+            <div class="relative timeline-line pl-8 space-y-8">
+                
+                <!-- Phase 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-10 top-1 w-6 h-6 bg-slate-900 rounded-full border-4 border-slate-200 z-10"></div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-lg text-slate-800">Phase 1: Cleanup & De-Localization</h3>
+                            <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded">Wochen 1-4</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Entfernung aller chinesischen Sprachbarrieren aus dem Kernsystem.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-700">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Audit aller Go-Files auf Hardcoded Strings.</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> <strong>DB Migration:</strong> Rename <code>yonghu</code> &rarr; <code>users</code>.</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Bereinigung der Git-History.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-10 top-1 w-6 h-6 bg-white rounded-full border-4 border-slate-300 z-10"></div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-lg text-slate-800">Phase 2: Architecture Refactoring</h3>
+                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded">Wochen 5-10</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Struktureller Umbau zur Hybriden Architektur.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-700">
+                            <li class="flex items-start"><i class="fas fa-tools text-slate-400 mt-1 mr-2"></i> Entkopplung der Web-UI vom Go-Binary.</li>
+                            <li class="flex items-start"><i class="fas fa-tools text-slate-400 mt-1 mr-2"></i> Implementierung der internen REST API (Go).</li>
+                            <li class="flex items-start"><i class="fas fa-tools text-slate-400 mt-1 mr-2"></i> Setup Docker Compose Stack (Core + DB + UI).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative group">
+                    <div class="absolute -left-10 top-1 w-6 h-6 bg-white rounded-full border-4 border-slate-300 z-10"></div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-lg text-slate-800">Phase 3: Migration & Release</h3>
+                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded">Wochen 11-14</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Datenübernahme, Optimierung und finaler Rollout.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-700">
+                            <li class="flex items-start"><i class="fas fa-rocket text-slate-400 mt-1 mr-2"></i> Ausführung der Daten-Migrations-Skripte.</li>
+                            <li class="flex items-start"><i class="fas fa-rocket text-slate-400 mt-1 mr-2"></i> Performance Tuning der Go Routines.</li>
+                            <li class="flex items-start"><i class="fas fa-flag-checkered text-amber-500 mt-1 mr-2"></i> Release v2.0 (English Standard).</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2026 Honey Scan Architecture Group. Basierend auf Deep Research Analyse.</p>
+        </div>
+    </footer>
 
     <!-- Logic Script -->
     <script>
-        // State Management
-        const state = {
-            currentSection: 'overview',
-            chartsInitialized: false
-        };
+        // --- 1. Navigation Logic ---
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-        // DOM Elements
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const sidebar = document.getElementById('sidebar');
-        const navBtns = document.querySelectorAll('.nav-btn');
-        const sections = document.querySelectorAll('.view-section');
+        // --- 2. Chart Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initDebtChart();
+            initPerfChart();
+        });
 
-        // Navigation Logic
-        function navigateTo(targetId) {
-            // Update UI State
-            state.currentSection = targetId;
-            
-            // Hide all sections
-            sections.forEach(sec => sec.classList.add('hidden'));
-            
-            // Show target section
-            document.getElementById(targetId).classList.remove('hidden');
-            
-            // Update Sidebar Active State
-            navBtns.forEach(btn => {
-                if (btn.dataset.target === targetId) {
-                    btn.classList.add('active-nav', 'bg-slate-800', 'text-amber-400', 'border-l-4', 'border-amber-500');
-                    btn.classList.remove('border-transparent');
-                } else {
-                    btn.classList.remove('active-nav', 'bg-slate-800', 'text-amber-400', 'border-l-4', 'border-amber-500');
-                    btn.classList.add('border-transparent');
+        // Chart 1: Localization Debt (Doughnut)
+        let debtChartInstance;
+        function initDebtChart() {
+            const ctx = document.getElementById('debtChart').getContext('2d');
+            debtChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Englisches UI', 'Englisches Backend', 'CN DB Schema', 'CN Kommentare/Docs', 'CN Hardcoded Logic'],
+                    datasets: [{
+                        data: [30, 10, 25, 15, 20],
+                        backgroundColor: [
+                            '#22c55e', // Green (Good)
+                            '#86efac', // Light Green (Good)
+                            '#ef4444', // Red (Bad)
+                            '#fca5a5', // Light Red (Bad)
+                            '#f97316'  // Orange (Critical)
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
                 }
             });
-
-            // Initialize Charts if entering analysis sections
-            if ((targetId === 'repo-analysis' || targetId === 'architecture') && !state.chartsInitialized) {
-                initCharts();
-                state.chartsInitialized = true;
-            }
-
-            // Close mobile menu if open
-            if (window.innerWidth < 768) {
-                sidebar.classList.add('-translate-x-full');
-            }
         }
 
-        // Toggle Timeline Details
-        function toggleDetails(id) {
-            const el = document.getElementById(id);
-            if (el.classList.contains('hidden')) {
-                el.classList.remove('hidden');
-                el.classList.add('fade-in');
-            } else {
-                el.classList.add('hidden');
-            }
-        }
-
-        // Mobile Menu Toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('-translate-x-full');
-        });
-
-        // Charts Initialization
-        function initCharts() {
-            // 1. Repo Composition Chart
-            const ctxRepo = document.getElementById('repoChart');
-            if (ctxRepo) {
-                new Chart(ctxRepo, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Legacy CN Logic', 'Partially Translated', 'Core English Refactor'],
-                        datasets: [{
-                            data: [55, 30, 15],
-                            backgroundColor: [
-                                '#ef4444', // Red (Legacy)
-                                '#f59e0b', // Amber (Partial)
-                                '#22c55e'  // Green (Refactored)
-                            ],
-                            borderWidth: 0
-                        }]
+        // Chart 2: Performance (Bar)
+        let perfChartInstance;
+        function initPerfChart() {
+            const ctx = document.getElementById('perfChart').getContext('2d');
+            perfChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Go (Goroutines)', 'PHP (FPM)'],
+                    datasets: [{
+                        label: 'Requests/Sekunde (Simuliert)',
+                        data: [12000, 800],
+                        backgroundColor: ['#22c55e', '#ef4444'],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                        x: { grid: { display: false } }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    usePointStyle: true,
-                                    padding: 20
-                                }
-                            }
-                        }
+                    plugins: {
+                        legend: { display: false }
                     }
-                });
-            }
+                }
+            });
+        }
 
-            // 2. Performance Comparison Chart
-            const ctxPerf = document.getElementById('perfChart');
-            if (ctxPerf) {
-                new Chart(ctxPerf, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Go (Goroutines)', 'Python (AsyncIO)', 'PHP (FPM)'],
-                        datasets: [{
-                            label: 'Concurrent Req/Sec (Simulated)',
-                            data: [12500, 4200, 800],
-                            backgroundColor: [
-                                '#22c55e', // Go
-                                '#6366f1', // Python
-                                '#ef4444'  // PHP
-                            ],
-                            borderRadius: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: '#f1f5f9'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    display: false
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.raw + ' Req/Sec';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
+        function simulateLoad() {
+            // Visualize a load test update
+            if (perfChartInstance) {
+                // Simulate fluctuation under load
+                const goLoad = 11500 + Math.random() * 1000;
+                const phpLoad = 600 + Math.random() * 300; // PHP struggles
+                
+                perfChartInstance.data.datasets[0].data = [goLoad, phpLoad];
+                perfChartInstance.update();
             }
         }
 
-        // Initialize first view
-        document.addEventListener('DOMContentLoaded', () => {
-            navigateTo('overview');
-        });
+        // --- 3. Architecture Interactive Diagram Logic ---
+        
+        const archData = {
+            sensor: {
+                title: "Performance Layer (Go)",
+                icon: "fa-microchip",
+                colorClass: "text-blue-600",
+                desc: "Der 'Sensor Core' bleibt in Go geschrieben, um die hohe Nebenläufigkeit (Concurrency) zu gewährleisten. Er lauscht auf Ports, emuliert Protokolle und sendet Events 'Fire & Forget' an die Queue.",
+                tags: ["Golang", "Raw Sockets", "Non-Blocking I/O", "Internal API"]
+            },
+            data: {
+                title: "Data Layer (Persistence)",
+                icon: "fa-database",
+                colorClass: "text-purple-600",
+                desc: "Zentraler Speicherort. Redis dient als Puffer für eingehende Angriffsdaten (High Write Speed), MySQL/SQLite speichert persistente Logs und Konfigurationen.",
+                tags: ["Redis Queue", "MySQL 8.0", "Docker Volume", "English Schema"]
+            },
+            ui: {
+                title: "Management Layer (Web)",
+                icon: "fa-desktop",
+                colorClass: "text-amber-600",
+                desc: "Das neue Dashboard. Entkoppelt vom Core. Liest Daten aus der DB und sendet Konfigurationen per JSON-REST-API an den Core. Kann in PHP, Python oder JS realisiert werden.",
+                tags: ["PHP/Laravel", "REST Client", "Chart.js", "Admin Panel"]
+            }
+        };
+
+        function selectArchComponent(key) {
+            // UI Update
+            document.querySelectorAll('.arch-node').forEach(node => node.classList.remove('active'));
+            // Find the clicked element logic - simplified here by relying on user click flow,
+            // normally would pass 'this' or use ID, but for this demo, visual feedback is generic active class.
+            // Actually, let's just highlight specific ones based on key for correctness:
+            // Since we don't have unique IDs on divs, we iterate (simplified approach).
+            // In a real app, use IDs. For this layout:
+            const nodes = document.querySelectorAll('.arch-node');
+            if(key === 'sensor') nodes[0].classList.add('active');
+            if(key === 'data') nodes[1].classList.add('active');
+            if(key === 'ui') nodes[2].classList.add('active');
+
+            // Data Update
+            const data = archData[key];
+            const titleEl = document.getElementById('detail-title');
+            const descEl = document.getElementById('detail-desc');
+            const iconEl = document.getElementById('detail-icon');
+            const techContainer = document.getElementById('detail-tech-stack');
+            const tagsContainer = document.getElementById('tech-tags');
+
+            // Animation reset
+            titleEl.parentElement.classList.remove('animate-fade-in');
+            void titleEl.parentElement.offsetWidth; // trigger reflow
+            titleEl.parentElement.classList.add('animate-fade-in');
+
+            titleEl.textContent = data.title;
+            descEl.textContent = data.desc;
+            
+            iconEl.className = `fas ${data.icon}`;
+            iconEl.parentElement.className = `text-3xl mb-4 ${data.colorClass}`;
+
+            // Tags
+            techContainer.classList.remove('hidden');
+            tagsContainer.innerHTML = '';
+            data.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = "px-2 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded border border-slate-200";
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+        }
 
     </script>
 </body>

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2026-01-13
+
+### Changed
+- 📄 **Documentation**: Updated README to reflect the removal of Analysis 6.
+- 💄 **Reports**: Enhanced Honey Scan Deep Research Report (Analysis 5) with interactive architecture diagrams and performance charts.
+- 🗑️ **Reports**: Removed Honey Scan Deep Research Report (Analysis 6).
+
 ## [1.2.0] - 2026-01-13
 
 ### Added
