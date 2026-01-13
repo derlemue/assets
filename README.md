@@ -5,7 +5,7 @@
 > A centralized hub for all static assets, media snippets, design resources, and reports associated with the `lemueIO` ecosystem.
 > Ensure consistency. Embrace creativity.
 
-![Version](https://img.shields.io/badge/version-1.2.4-blue.svg?style=for-the-badge&logo=git)
+![Version](https://img.shields.io/badge/version-1.2.5-blue.svg?style=for-the-badge&logo=git)
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge&logo=open-source-initiative)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)
 ![Repo Size](https://img.shields.io/github/repo-size/derlemue/assets?style=for-the-badge&color=orange)
@@ -44,30 +44,33 @@ We maintain detailed analysis and security reports within this repository.
 
 ### 🔍 Deep Research & Analysis
 
-- **Honey Scan Deep Research Report (Analysis 1)**:
+- **Analysis 1: Code & Architecture Analysis**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-1.html)
   - [PDF Version](docs/reports/honey-scan-deepresearch-report-1.pdf)
   - [Markdown Source](docs/reports/honey-scan-deepresearch-report-1.md)
   - [Audio Summary](docs/reports/honey-scan-deepresearch-report-1.mp3)
   - [IDE Optimized](docs/reports/honey-scan-deepresearch-report-for-ide-1.md)
 
-- **Honey Scan Deep Research Report (Analysis 2)**:
+- **Analysis 2: Refactoring & Architecture Roadmap**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-2.html)
   - [PDF Version](docs/reports/honey-scan-deepresearch-report-2.pdf)
   - [Markdown Source](docs/reports/honey-scan-deepresearch-report-2.md)
   - [Audio Summary](docs/reports/honey-scan-deepresearch-report-2.mp3)
 
-- **Honey Scan Deep Research Report (Analysis 3)**:
+- **Analysis 3: Infrastructure & Hybrid Strategy**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-3.html)
   - [Audio Summary](docs/reports/honey-scan-deepresearch-report-3.mp3)
   - [Markdown Source](docs/reports/honey-scan-deepresearch-report-3.md)
 
-- **Honey Scan Deep Research Report (Analysis 4)**:
+- **Analysis 4: Architecture & Roadmap Report**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-4.html)
   - [Audio Summary](docs/reports/honey-scan-deepresearch-report-4.mp3)
 
-- **Honey Scan Deep Research Report (Analysis 5)**:
+- **Analysis 5: Technical Architecture & Roadmap**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-5.html)
+
+- **Analysis 6: Die Architektur der Wachsamkeit**:
+  - [Markdown Essay](docs/reports/honey-scan-deepresearch-report-6.md)
 
 - **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
 - **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)

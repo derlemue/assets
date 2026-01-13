@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
  
+## [1.2.5] - 2026-01-13
+
+### Added
+- 📄 **Documentation**: Added Analysis 6 (Die Architektur der Wachsamkeit) as Markdown essay.
+- 🖋️ **Naming**: Standardized and refined report titles in README for better clarity and professionalism.
+
 ## [1.2.4] - 2026-01-13
  
 ### Added
