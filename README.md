@@ -3,7 +3,7 @@
 # 🌌 lemueIO Assets & Resources
 **The curated heart of visual and technical intelligence for the lemueIO ecosystem.**
 
-[![Version](https://img.shields.io/badge/version-1.3.3-7B2CBF?style=for-the-badge&logo=git)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.4-7B2CBF?style=for-the-badge&logo=git)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-3C096C?style=for-the-badge&logo=open-source-initiative)](LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-5A189A?style=for-the-badge)](https://github.com/derlemue/assets)
 [![Repo Size](https://img.shields.io/github/repo-size/derlemue/assets?style=for-the-badge&color=240046)](https://github.com/derlemue/assets)
@@ -14,7 +14,7 @@
 > *"In the dance between code and creativity, consistency is our rhythm and innovation is our melody."*
 > This repository is not merely a storage of files; it is a testament to the pursuit of technical excellence and aesthetic harmony within the `lemueIO` space.
 
-[**Explore Assets**](#-visual-library) • [**View Reports**](#-intelligence-reports) • [**Audio Hub 🎙️**](https://derlemue.github.io/assets/audio-player.html) • [**Learning Hub**](#-learning-laboratory)
+[**Explore Assets**](#-visual-library) • [**View Reports**](#-intelligence-reports) • [**Audio Hub 🎙️**](https://derlemue.github.io/assets/audio-player.html) • [**Video Vault 🎬**](https://derlemue.github.io/assets/video-vault.html) • [**Learning Hub**](#-learning-laboratory)
 
 </div>
 
@@ -47,8 +47,8 @@ A curated collection of visual elements that define the `lemueIO` identity.
 
 | Feature | Visual Theme | Source |
 | :--- | :--- | :--- |
-| **M3l1nda Clips** | Animated vignettes and character snapshots. | [`avatars/m3l1nda_clip/`](avatars/m3l1nda_clip/) |
-| **Ph0x Tech clips** | Data center atmospheres and tech-noir loops. | [`avatars/ph0x_clip/`](avatars/ph0x_clip/) |
+| **M3l1nda Clips** | Animated vignettes and character snapshots. | [**Play Clips 🎬**](https://derlemue.github.io/assets/video-vault.html) |
+| **Ph0x Tech clips** | Data center atmospheres and tech-noir loops. | [**Play Clips 🎬**](https://derlemue.github.io/assets/video-vault.html) |
 
 ---
 

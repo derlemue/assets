@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Media Vault | lemueIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #05010a;
+            --accent-blue: #4361ee;
+            --accent-purple: #7b2cbf;
+            --text-color: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(123, 44, 191, 0.1) 0%, transparent 40%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4cc9f0, #4361ee, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-blue);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-info {
+            padding: 25px;
+        }
+
+        .video-info h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .video-info p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(67, 97, 238, 0.15);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            padding-bottom: 40px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #4cc9f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🎬 Media Vault</h1>
+        <p class="subtitle">Dynamic visuals, animated vignettes, and technical atmosphere loops.</p>
+        <a href="https://github.com/derlemue/assets" class="back-link">← Return to lemueIO Assets</a>
+    </header>
+
+    <div class="container">
+        <!-- M3l1nda Clip -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <video controls loop muted playsinline>
+                    <source src="avatars/m3l1nda_clip/mel.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-info">
+                <span class="tag">Character Insight</span>
+                <h2>M3l1nda: Animated Snippet</h2>
+                <p>A dynamic glimpse into the character's persona and visual presence.</p>
+            </div>
+        </article>
+
+        <!-- Ph0x Clip 1 -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <video controls loop muted playsinline>
+                    <source src="avatars/ph0x_clip/ph0x_clip_datacenter.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-info">
+                <span class="tag">Environment</span>
+                <h2>Data Center Atmosphere I</h2>
+                <p>Technical atmosphere loop showcasing high-density infrastructure.</p>
+            </div>
+        </article>
+
+        <!-- Ph0x Clip 2 -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <video controls loop muted playsinline>
+                    <source src="avatars/ph0x_clip/ph0x_clip_datacenter_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-info">
+                <span class="tag">Infrastructure</span>
+                <h2>Advanced Network Loop II</h2>
+                <p>Cinematic technical vignette featuring Ph0x interaction points.</p>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>Crafted with 💜 by the lemueIO Team</p>
+        <p>© 2026 lemueIO Ecosystem</p>
+    </footer>
+
+</body>
+
+</html>

@@ -9,6 +9,17 @@
 
 </div>
 
+## 🎬 [1.3.4] — 2026-01-13
+> **The Cinematic Expansion Release**
+> Onboarding a professional video portal for all media and character vignettes.
+
+### 📹 Media & Immersive Experience
+- **Video Vault**: Launched [video-vault.html](video-vault.html) — an immersive, cinema-themed portal for Character and Infrastructure loops.
+- **Interactive Playback**: Integrated high-fidelity MP4 players with loop support directly into the web interface.
+- **README Integration**: Strategic placement of "Play Clips 🎬" action links in the Media Vault section.
+
+---
+
 ## 🎙️ [1.3.3] — 2026-01-13
 > **The Audio Hub Release**
 > Launching a dedicated, premium portal for all analysis audio summaries.
