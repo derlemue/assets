@@ -9,6 +9,12 @@
 
 </div>
 
+## 🎙️ [1.3.2] — 2026-01-13
+### Added
+- 🎤 **Audio Intelligence**: Integrated the new audio summary for **Analysis 6** (`derlemue-essay-1.mp3`) into the global catalog.
+
+---
+
 ## 🖼️ [1.3.1] — 2026-01-13
 > **The Gallery Refinement Release**
 > Extending the premium design language to every corner of the ecosystem.
