@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honey Scan | Refactoring & Architektur Roadmap</title>
+    
+    <!-- CSS Framework: Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Charting Library: Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Configuration & Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#1e293b', // Custom Darker Slate
+                            900: '#0f172a', // Deep Background
+                        },
+                        brand: {
+                            blue: '#3b82f6',
+                            go: '#00ADD8',    // Go Lang Color
+                            php: '#777BB4',   // PHP Color
+                            danger: '#ef4444',
+                            success: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #f8fafc; /* Light Theme Background as requested */
+            color: #1e293b;
+        }
+
+        /* Chart Container Styling (Strictly enforced per requirements) */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Max width to prevent stretching */
+            height: 400px;    /* Base height */
+            max-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        /* Utility for Diagram Boxes */
+        .arch-box {
+            transition: all 0.3s ease;
+        }
+        .arch-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .active-tab {
+            border-bottom: 2px solid #3b82f6;
+            color: #3b82f6;
+        }
+    </style>
+
+    <!-- 
+    ========================================================================
+    PLACEHOLDER COMMENTS (REQUIRED)
+    ========================================================================
+
+    <!-- Chosen Palette: "Corporate Tech Clean" - Light background (#f8fafc) with deep slate text for readability. Accents use semantic colors: Go-Blue (#00ADD8) for the core engine, PHP-Purple (#777BB4) for the UI layer, and Signal Red/Green for architectural decisions (Veto/Approval). This creates a calm, authoritative "Blueprint" feel. -->
+
+    <!-- Application Structure Plan: 
+         The app is designed as a "Strategic Command Dashboard" for the Lead Architect.
+         1. Executive Summary: Immediate context ("Where are we?").
+         2. Repository Diff (The Baseline): Visual comparison of Legacy HFish vs. Target Honey-Scan.
+         3. The Performance Dilemma (The Pivot): Interactive simulation proving why Go > PHP for the core. This justifies the "VETO".
+         4. Target Architecture (The Solution): A simplified block diagram (CSS Grid) showing the Hybrid Model.
+         5. Roadmap (The Execution): Interactive accordion timeline for Phase 1, 2, 3.
+         This flow moves from Problem -> Analysis -> Solution -> Plan, mirroring a technical whitepaper but interactively.
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. Comparison Table (Diff): HTML/JS Toggles. Goal: Clearly isolate "CN Logic" to be removed.
+         2. Performance Chart (Chart.js): Line Chart comparing Throughput vs. Concurrency. Goal: Prove Go's superiority for socket handling (Inform/Compare). No SVG used.
+         3. Architecture Stack (CSS Grid): Interactive blocks using standard HTML divs. Hovering reveals data flow (JSON/IPC). Goal: Explain the "Hybrid" approach without complex SVG diagrams.
+         4. Roadmap (HTML Accordion): Text-heavy content organized progressively to avoid information overload.
+         
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
+    -->
+    -->
+
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-bold tracking-tight text-slate-900">Honey Scan <span class="text-brand-blue font-light">Architect</span></span>
+                    <span class="hidden md:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        Deep Research Report
+                    </span>
+                </div>
+                <nav class="flex space-x-8">
+                    <button onclick="scrollToSection('analysis')" class="text-slate-500 hover:text-brand-blue px-3 py-2 text-sm font-medium transition-colors">Analyse</button>
+                    <button onclick="scrollToSection('architecture')" class="text-slate-500 hover:text-brand-blue px-3 py-2 text-sm font-medium transition-colors">Architektur</button>
+                    <button onclick="scrollToSection('roadmap')" class="text-slate-500 hover:text-brand-blue px-3 py-2 text-sm font-medium transition-colors">Roadmap</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow bg-slate-50 pb-20">
+
+        <!-- Section 1: Executive Context & Repo Diff -->
+        <section id="analysis" class="pt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Refactoring & Architektur-Strategie</h1>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                    Statusbericht zur Modernisierung von <code>hacklcx/HFish</code> zu <code>derlemue/honey-scan</code>. 
+                    Ziel ist die Entfernung veralteter CN-Logik und die Implementierung einer hybriden Hochleistungs-Architektur.
+                </p>
+            </div>
+
+            <!-- Intro Box -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">🛡️ Missionsziel: "De-Localization & Performance"</h3>
+                <p class="text-slate-600 mb-4">
+                    Die Analyse des <code>derlemue/honey-scan</code> Repositorys zeigt einen begonnenen, aber unvollständigen Refactoring-Prozess. 
+                    Während die CLI-Struktur modernisiert wurde, existieren im Backend noch massive Fragmente der ursprünglichen chinesischen Logik (HFish).
+                </p>
+            </div>
+
+            <!-- Interactive Diff Viewer -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Column A: Legacy (HFish) -->
+                <div class="bg-slate-100 rounded-xl border border-slate-200 overflow-hidden">
+                    <div class="bg-slate-200 px-4 py-3 border-b border-slate-300 flex justify-between items-center">
+                        <span class="font-mono text-sm font-bold text-slate-600">ORIGIN: hacklcx/HFish</span>
+                        <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded">Legacy</span>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-start gap-3 opacity-50">
+                            <div class="mt-1 w-4 h-4 rounded bg-red-400 shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Hardcoded CN Strings</h4>
+                                <p class="text-xs text-slate-500">Logik ist eng mit chinesischen Zeichensätzen verkoppelt.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 opacity-50">
+                            <div class="mt-1 w-4 h-4 rounded bg-red-400 shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Monolithische Go Struktur</h4>
+                                <p class="text-xs text-slate-500">UI und Core sind schwer trennbar.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 opacity-50">
+                            <div class="mt-1 w-4 h-4 rounded bg-red-400 shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-sm">SQLite Abhängigkeit</h4>
+                                <p class="text-xs text-slate-500">Begrenzte Skalierbarkeit bei hohen Schreiblasten.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column B: Target (Honey Scan) -->
+                <div class="bg-white rounded-xl border-2 border-brand-blue shadow-lg overflow-hidden relative">
+                    <div class="absolute top-0 right-0 bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-bl-lg">TARGET</div>
+                    <div class="bg-blue-50 px-4 py-3 border-b border-blue-100 flex justify-between items-center">
+                        <span class="font-mono text-sm font-bold text-brand-blue">FORK: derlemue/honey-scan</span>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-start gap-3 cursor-pointer hover:bg-blue-50 p-2 rounded transition-colors" onclick="highlightDetail('trans')">
+                            <div class="mt-1 w-4 h-4 rounded bg-green-500 shrink-0 flex items-center justify-center text-white text-[10px]">✓</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-800">Internationalization (i18n)</h4>
+                                <p class="text-xs text-slate-500">Alle Logs und UI-Elemente strikt auf Englisch.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 cursor-pointer hover:bg-blue-50 p-2 rounded transition-colors" onclick="highlightDetail('hybrid')">
+                            <div class="mt-1 w-4 h-4 rounded bg-green-500 shrink-0 flex items-center justify-center text-white text-[10px]">✓</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-800">Hybrid Core</h4>
+                                <p class="text-xs text-slate-500">Trennung von Engine (Go) und Management (PHP).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 cursor-pointer hover:bg-blue-50 p-2 rounded transition-colors" onclick="highlightDetail('json')">
+                            <div class="mt-1 w-4 h-4 rounded bg-green-500 shrink-0 flex items-center justify-center text-white text-[10px]">✓</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-800">JSON-Based IPC</h4>
+                                <p class="text-xs text-slate-500">Standardisierter Datenaustausch statt direkter DB-Calls.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dynamic Detail Box -->
+                    <div id="detail-box" class="bg-slate-50 border-t border-slate-100 p-3 text-xs text-slate-500 italic">
+                        Klicken Sie auf ein Element oben für Details.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Performance Dilemma (Chart.js) -->
+        <section id="architecture" class="pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900 rounded-2xl shadow-xl p-8 text-white relative overflow-hidden">
+                <!-- Background decoration -->
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-brand-blue opacity-10 rounded-full blur-3xl"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Text Content -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="inline-block px-3 py-1 bg-red-500/20 text-red-300 rounded text-xs font-bold border border-red-500/30">
+                            ARCHITEKTUR-WARNUNG
+                        </div>
+                        <h2 class="text-2xl font-bold">Das Performance-Dilemma</h2>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Der ursprüngliche Plan, den Backend-Core auf PHP/Python zu portieren, muss <strong>abgelehnt (VETO)</strong> werden.
+                        </p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Für Low-Level Network Listeners (Honeypots), die Tausende gleichzeitige Verbindungen halten müssen, ist Go (Golang) aufgrund seiner <em>Goroutines</em> und des effizienten Memory-Modells alternativlos.
+                        </p>
+                        
+                        <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                            <h4 class="font-bold text-brand-go mb-2">Empfehlung: Hybrid</h4>
+                            <ul class="text-xs space-y-2 text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-go rounded-full"></span> <strong>Core (Go):</strong> Netzwerk I/O, Sockets.</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-php rounded-full"></span> <strong>WebUI (PHP):</strong> Admin, Dashboard.</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-yellow-400 rounded-full"></span> <strong>Analysis (Python):</strong> Reporting.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chart Visualization -->
+                    <div class="lg:col-span-2 flex flex-col justify-center">
+                        <h3 class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-wider text-center">Simulierter Lasttest: Concurrent Connections</h3>
+                        
+                        <!-- Chart Container -->
+                        <div class="chart-container bg-slate-800/30 rounded-lg p-2 border border-slate-700/50">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+
+                        <div class="mt-4 flex justify-center gap-6 text-xs text-slate-400">
+                            <button onclick="updateChartData('low')" class="hover:text-white transition-colors border-b border-transparent hover:border-white">Moderat (1k Conn)</button>
+                            <button onclick="updateChartData('high')" class="text-white font-bold border-b border-brand-blue">DDoS Simulation (10k+ Conn)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Target Architecture Block Diagram -->
+        <section class="pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Ziel-Architektur: Der "Hybrid-Stack"</h2>
+            
+            <!-- Interactive Architecture Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
+                
+                <!-- Layer 1: The Engine -->
+                <div class="arch-box bg-white p-6 rounded-xl border-l-4 border-brand-go shadow-sm group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center text-2xl">⚙️</div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Backend / Edge</span>
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg mb-2">Go Core Engine</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Verantwortlich für rohes Socket-Handling auf Port 1-65535. Simuliert Services (SSH, HTTP, MySQL).
+                    </p>
+                    <div class="bg-slate-100 rounded p-2 text-xs font-mono text-slate-600 group-hover:bg-cyan-50 group-hover:text-cyan-700 transition-colors">
+                        Output: JSON Stream -> Redis
+                    </div>
+                </div>
+
+                <!-- Layer 2: The Broker -->
+                <div class="arch-box bg-white p-6 rounded-xl border-l-4 border-yellow-400 shadow-sm group flex flex-col justify-center items-center text-center relative">
+                    <!-- Connector Lines (Visual CSS only) -->
+                    <div class="hidden md:block absolute left-0 top-1/2 -ml-6 w-6 h-0.5 bg-slate-300"></div>
+                    <div class="hidden md:block absolute right-0 top-1/2 -mr-6 w-6 h-0.5 bg-slate-300"></div>
+
+                    <div class="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center text-2xl mb-3 z-10">🔄</div>
+                    <h3 class="font-bold text-slate-800 text-lg">Redis / Message Queue</h3>
+                    <p class="text-xs text-slate-500 mt-2">
+                        Entkoppelt die Hochgeschwindigkeits-Engine vom langsameren Web-Frontend. Puffert Bursts ab.
+                    </p>
+                </div>
+
+                <!-- Layer 3: The UI -->
+                <div class="arch-box bg-white p-6 rounded-xl border-l-4 border-brand-php shadow-sm group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-2xl">🖥️</div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Frontend / Mgmt</span>
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg mb-2">PHP Web Interface</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Verwaltung der Konfiguration, Visualisierung der Angriffe und Benutzer-Management.
+                    </p>
+                    <div class="bg-slate-100 rounded p-2 text-xs font-mono text-slate-600 group-hover:bg-indigo-50 group-hover:text-indigo-700 transition-colors">
+                        Input: Read from Redis -> Dashboard
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 4: Roadmap Timeline -->
+        <section id="roadmap" class="pt-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">Implementierungs-Roadmap</h2>
+
+            <div class="space-y-6">
+                
+                <!-- Phase 1 -->
+                <div class="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md">
+                    <button onclick="toggleAccordion('phase1')" class="w-full px-6 py-4 flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-slate-900 text-white text-xs font-bold px-2 py-1 rounded">PHASE 1</span>
+                            <h3 class="font-bold text-slate-800">Cleanup & De-Localization</h3>
+                        </div>
+                        <span id="icon-phase1" class="text-slate-400 text-xl transform transition-transform">+</span>
+                    </button>
+                    <div id="content-phase1" class="hidden px-6 py-6 border-t border-slate-100">
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 font-bold">›</span>
+                                Entfernung aller hard-codierten chinesischen Strings in <code>/server</code> und <code>/client</code>.
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 font-bold">›</span>
+                                Extraktion von UI-Texten in separate <code>en.json</code> Sprachdateien.
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 font-bold">›</span>
+                                Bereinigung der Go-Dependencies von nicht-öffentlichen oder veralteten Paketen.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md">
+                    <button onclick="toggleAccordion('phase2')" class="w-full px-6 py-4 flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-brand-blue text-white text-xs font-bold px-2 py-1 rounded">PHASE 2</span>
+                            <h3 class="font-bold text-slate-800">Architektur-Refactoring (Hybrid Core)</h3>
+                        </div>
+                        <span id="icon-phase2" class="text-slate-400 text-xl transform transition-transform">+</span>
+                    </button>
+                    <div id="content-phase2" class="hidden px-6 py-6 border-t border-slate-100">
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-blue font-bold">›</span>
+                                Implementierung des Redis-Connectors in Go (Ersatz für direkte SQLite Writes).
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-blue font-bold">›</span>
+                                Aufbau des PHP-Consumers zum Auslesen der Redis-Queue.
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-blue font-bold">›</span>
+                                Refactoring der <code>Honey-Scan</code> CLI für Docker-First Deployment.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md">
+                    <button onclick="toggleAccordion('phase3')" class="w-full px-6 py-4 flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">PHASE 3</span>
+                            <h3 class="font-bold text-slate-800">Migration & Datenstrukturen</h3>
+                        </div>
+                        <span id="icon-phase3" class="text-slate-400 text-xl transform transition-transform">+</span>
+                    </button>
+                    <div id="content-phase3" class="hidden px-6 py-6 border-t border-slate-100">
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 font-bold">›</span>
+                                Migration existierender SQLite Daten in die neue PostgreSQL Struktur (via PHP).
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 font-bold">›</span>
+                                Finalisierung der REST-API für externe SIEM-Anbindung (Warden/SABU).
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm">
+                Generiert basierend auf Deep Research Analyse: <code>derlemue/honey-scan</code>
+                <br>
+                <span class="opacity-75 text-xs">Architectural Decision Record #042</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Logic & Interaction -->
+    <script>
+        // Smooth Scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Accordion Logic for Roadmap
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '-';
+                icon.classList.add('text-brand-blue');
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '+';
+                icon.classList.remove('text-brand-blue');
+            }
+        }
+
+        // Comparison Detail Highlighter
+        function highlightDetail(type) {
+            const box = document.getElementById('detail-box');
+            if (type === 'trans') {
+                box.innerHTML = "<span class='font-bold text-slate-800'>Internationalization:</span> Entfernung von Hardcoded Strings in Go-Files (client/server). Nutzung von 'gettext' Logik.";
+            } else if (type === 'hybrid') {
+                box.innerHTML = "<span class='font-bold text-slate-800'>Hybrid Core:</span> Go für High-Speed Ingest, PHP für langsame Business Logic. Beste aus beiden Welten.";
+            } else if (type === 'json') {
+                box.innerHTML = "<span class='font-bold text-slate-800'>JSON IPC:</span> Entkopplung. Ermöglicht späteres Austauschen von Komponenten ohne Rewrite.";
+            }
+        }
+
+        // Chart.js Configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            // Initial Data (Simulation)
+            const labels = ['100', '500', '1k', '2k', '5k', '10k'];
+            
+            // Go: Linear scalability mostly
+            const dataGo = [10, 45, 95, 180, 420, 850]; 
+            
+            // PHP/Python: Exponential overhead with threads/processes
+            const dataScript = [15, 80, 250, 700, 2200, 5000]; // Latency in ms (higher is bad)
+
+            window.perfChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Go Core (Goroutines)',
+                            data: dataGo,
+                            borderColor: '#00ADD8', // Brand Go
+                            backgroundColor: 'rgba(0, 173, 216, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            pointBackgroundColor: '#00ADD8'
+                        },
+                        {
+                            label: 'PHP/Python (Thread/Fork)',
+                            data: dataScript,
+                            borderColor: '#ef4444', // Danger Red
+                            backgroundColor: 'rgba(239, 68, 68, 0.05)',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            tension: 0.3,
+                            pointBackgroundColor: '#ef4444'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#94a3b8' },
+                            position: 'top'
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + 'ms Latenz';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Gleichzeitige Verbindungen', color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Latenz (ms) - Niedriger ist besser', color: '#64748b' }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Update Chart Data based on "Scenario"
+        function updateChartData(scenario) {
+            if (scenario === 'high') {
+                // Show breakdown scenario
+                window.perfChart.data.labels = ['10k', '20k', '30k', '50k'];
+                window.perfChart.data.datasets[0].data = [850, 1200, 1500, 2100]; // Go holds up
+                window.perfChart.data.datasets[1].data = [5000, 12000, 25000, 45000]; // PHP crashes/stalls
+                window.perfChart.options.scales.x.title.text = "Extrem-Last (DDoS Simulation)";
+            } else {
+                // Reset to normal
+                window.perfChart.data.labels = ['100', '500', '1k', '2k', '5k', '10k'];
+                window.perfChart.data.datasets[0].data = [10, 45, 95, 180, 420, 850];
+                window.perfChart.data.datasets[1].data = [15, 80, 250, 700, 2200, 5000];
+                window.perfChart.options.scales.x.title.text = "Gleichzeitige Verbindungen";
+            }
+            window.perfChart.update();
+        }
+
+    </script>
+</body>
+</html>
