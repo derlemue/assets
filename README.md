@@ -42,17 +42,30 @@ Files are standardized with a numeric suffix (e.g., `item-1.png`, `item-2.png`) 
 
 We maintain detailed analysis and security reports within this repository.
 
-- **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
-- **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)
+### 🔍 Deep Research & Analysis
+
 - **Honey Scan Deep Research Report (Analysis 1)**:
   - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-1.html)
   - [PDF Version](docs/reports/honey-scan-deepresearch-report-1.pdf)
   - [Markdown Source](docs/reports/honey-scan-deepresearch-report-1.md)
   - [Audio Summary](docs/reports/honey-scan-deepresearch-report-1.mp3)
   - [IDE Optimized](docs/reports/honey-scan-deepresearch-report-for-ide-1.md)
+
 - **Honey Scan Deep Research Report (Analysis 2)**:
+  - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-2.html)
   - [PDF Version](docs/reports/honey-scan-deepresearch-report-2.pdf)
   - [Markdown Source](docs/reports/honey-scan-deepresearch-report-2.md)
+
+- **Honey Scan Deep Research Report (Analysis 3)**:
+  - [View HTML Report](https://derlemue.github.io/assets/docs/reports/honey-scan-deepresearch-report-3.html)
+
+- **Cyber Defense Ecosystem Analysis**: [`docs/reports/cyber-defense-report-1.pdf`](docs/reports/cyber-defense-report-1.pdf)
+- **Honey Security Infrastructure Analysis**: [`docs/reports/honey-security-report-1.pdf`](docs/reports/honey-security-report-1.pdf)
+
+### 🗺️ Roadmaps & Architecture
+
+- **Honey Scan Refactoring & Architecture Roadmap**: [`docs/reports/honey-scan-refactoring-architecture-roadmap.pdf`](docs/reports/honey-scan-refactoring-architecture-roadmap.pdf)
+- **Honey Scan Refactoring & Architektur-Roadmap (DE)**: [`docs/reports/honey-scan-refactoring-architektur-roadmap-de.pdf`](docs/reports/honey-scan-refactoring-architektur-roadmap-de.pdf)
 
 ---
 
